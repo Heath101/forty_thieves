@@ -4,7 +4,8 @@
   "description": "A javascript version of the Forty Thieves Solitaire",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --content-base dist --inline --hot"
   },
   "repository": {
     "type": "git",
@@ -12,16 +13,28 @@
   },
   "keywords": [
     "solitaire",
-    "forty",
-    "thieves",
+    "forty thieves",
     "games",
-    "card",
-    "games"
+    "card games"
   ],
   "author": "Heath Attig",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Heath101/forty_thieves/issues"
   },
-  "homepage": "https://github.com/Heath101/forty_thieves#readme"
+  "homepage": "https://github.com/Heath101/forty_thieves#readme",
+  "devDependencies": {
+    "css-loader": "^0.25.0",
+    "node-sass": "^3.10.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.2"
+  }
 }
