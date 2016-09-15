@@ -1,0 +1,27 @@
+{
+  "name": "forty_thieves",
+  "version": "1.0.0",
+  "description": "A javascript version of the Forty Thieves Solitaire",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Heath101/forty_thieves.git"
+  },
+  "keywords": [
+    "solitaire",
+    "forty",
+    "thieves",
+    "games",
+    "card",
+    "games"
+  ],
+  "author": "Heath Attig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Heath101/forty_thieves/issues"
+  },
+  "homepage": "https://github.com/Heath101/forty_thieves#readme"
+}
