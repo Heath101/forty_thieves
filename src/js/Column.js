@@ -3,11 +3,11 @@ require('../styles/column.scss')
 export default class Column {
   constructor(el) {
     this.el = document.getElementById(el)
-    this.level = 0
+    this.cards = []
     this.attach()
   }
 
-  attach() {}
+  attach() { }
 
   contains(x,y) {
     let bounds = this.el.getBoundingClientRect()
@@ -15,10 +15,11 @@ export default class Column {
   }
 
   addCard(card) {
-    let vertOffset =  50 * this.level
-    card.el.style.zIndex = this.level + 10
+    let level = this.cards.length
+    this.cards.push(card)
+    let vertOffset =  50 * level
+    card.el.style.zIndex = level + 10
     card.el.style.left = this.el.offsetLeft + 'px'
     card.el.style.top = this.el.offsetTop + vertOffset + 'px'
-    this.level += 1
   }
 }
