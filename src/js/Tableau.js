@@ -6,10 +6,8 @@ import Column from './Column.js'
 export default class Tableau {
   constructor(id) {
     this.el = document.getElementById(id)
-    this.card = new Card('card')
-    this.card2 = new Card('card2')
-    // this.column =
-    // this.column2 =
+    this.card = new Card('card', 1)
+    this.card2 = new Card('card2', 2)
     this.columns = [
       new Column('column'),
       new Column('column2')
@@ -30,8 +28,12 @@ export default class Tableau {
   }
 
   mousedown(card, e) {
+    console.log("Tableau got mousedown");
     e.preventDefault()
     e.stopPropagation()
+    this.columns.forEach( function(col, idx) {
+      if (col.hasCard(card)) { col.removeCard(card) }
+    }, this)
     this.currentCard = card
     this.currentCard.el.style.zIndex = 100
     this.mouseOffsetX = this.mousePosX - this.currentCard.el.offsetLeft;
@@ -41,15 +43,18 @@ export default class Tableau {
   mouseup(e) {
     let x = this.mousePosX
     let y = this.mousePosY
-    this.columns.forEach( function(col, idx) {
-      if (col.contains(x,y)) { col.addCard(this.currentCard) }
-    }, this)
+    if (this.currentCard) {
+      this.columns.forEach( function(col, idx) {
+        if (col.contains(x,y)) { col.addCard(this.currentCard) }
+      }, this)
+    }
     this.currentCard = null
   }
 
   mousemove(e) {
     this.mousePosX = window.event.clientX
     this.mousePosY = window.event.clientY
+
     if (this.currentCard !== null) {
       this.currentCard.el.style.left = (this.mousePosX - this.mouseOffsetX) + "px";
       this.currentCard.el.style.top  = (this.mousePosY - this.mouseOffsetY) + "px";

@@ -14,6 +14,12 @@ export default class Column {
     return y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right
   }
 
+  hasCard(c) {
+    return this.cards.some(function(card) {
+      return c.id == card.id
+    })
+  }
+
   addCard(card) {
     let level = this.cards.length
     this.cards.push(card)
@@ -21,5 +27,9 @@ export default class Column {
     card.el.style.zIndex = level + 10
     card.el.style.left = this.el.offsetLeft + 'px'
     card.el.style.top = this.el.offsetTop + vertOffset + 'px'
+  }
+
+  removeCard(card) {
+    this.cards.pop()
   }
 }
