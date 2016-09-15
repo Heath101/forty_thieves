@@ -1,1 +1,3 @@
-require('./styles/card.scss')
+import Card from './js/Card.js'
+
+new Card
