@@ -13,38 +13,38 @@ export default class Tableau {
     this.mousePosY = 0
     this.mouseOffsetX = 0
     this.mouseOffsetY = 0
-    this.selected = null
+    this.currentCard = null
     this.attach()
   }
 
   attach() {
-    this.card.el.addEventListener('mousedown', this.mousedown.bind(this))
-    this.card2.el.addEventListener('mousedown', this.mousedown.bind(this))
+    this.card.el.addEventListener('mousedown', this.mousedown.bind(this, this.card))
+    this.card2.el.addEventListener('mousedown', this.mousedown.bind(this, this.card2))
     this.el.addEventListener('mousemove', this.mousemove.bind(this))
     this.el.addEventListener('mouseup',    this.mouseup.bind(this))
   }
 
-  mousedown(e) {
+  mousedown(card, e) {
     e.preventDefault()
     e.stopPropagation()
-    this.selected = e.target
-    this.mouseOffsetX = this.mousePosX - this.selected.offsetLeft;
-    this.mouseOffsetY = this.mousePosY - this.selected.offsetTop;
+    this.currentCard = card
+    this.mouseOffsetX = this.mousePosX - this.currentCard.el.offsetLeft;
+    this.mouseOffsetY = this.mousePosY - this.currentCard.el.offsetTop;
   }
 
   mouseup(e) {
     if (this.column.contains(this.mousePosX, this.mousePosY)) {
-      this.column.addCard(this.card)
-    };
-    this.selected = null
+      this.column.addCard(this.currentCard)
+    }
+    this.currentCard = null
   }
 
   mousemove(e) {
     this.mousePosX = window.event.clientX
     this.mousePosY = window.event.clientY
-    if (this.selected !== null) {
-      this.selected.style.left = (this.mousePosX - this.mouseOffsetX) + "px";
-      this.selected.style.top  = (this.mousePosY - this.mouseOffsetY) + "px";
+    if (this.currentCard !== null) {
+      this.currentCard.el.style.left = (this.mousePosX - this.mouseOffsetX) + "px";
+      this.currentCard.el.style.top  = (this.mousePosY - this.mouseOffsetY) + "px";
     }
   }
 }
