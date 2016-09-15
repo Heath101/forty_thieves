@@ -28,7 +28,7 @@ export default class Tableau {
   }
 
   mousedown(card, e) {
-    console.log("Tableau got mousedown");
+    // console.log("Tableau got mousedown");
     e.preventDefault()
     e.stopPropagation()
     this.columns.forEach( function(col, idx) {
