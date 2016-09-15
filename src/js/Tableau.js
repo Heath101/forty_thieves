@@ -6,6 +6,7 @@ export default class Tableau {
   constructor(id) {
     this.el = document.getElementById(id)
     this.card = new Card('card')
+    this.card2 = new Card('card2')
     this.mousePosX = 0
     this.mousePosY = 0
     this.mouseOffsetX = 0
@@ -16,12 +17,15 @@ export default class Tableau {
 
   attach() {
     this.card.el.addEventListener('mousedown', this.mousedown.bind(this))
+    this.card2.el.addEventListener('mousedown', this.mousedown.bind(this))
     this.el.addEventListener('mousemove', this.mousemove.bind(this))
     this.el.addEventListener('mouseup',    this.mouseup.bind(this))
   }
 
   mousedown(e) {
-    this.selected = this.card.el
+    e.preventDefault()
+    e.stopPropagation()
+    this.selected = e.target
     this.mouseOffsetX = this.mousePosX - this.selected.offsetLeft;
     this.mouseOffsetY = this.mousePosY - this.selected.offsetTop;
   }
