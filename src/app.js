@@ -1,3 +1,3 @@
-import Card from './js/Card.js'
+import Tableau from './js/Tableau.js'
 
-new Card
+new Tableau('tableau')
