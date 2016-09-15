@@ -1,12 +1,14 @@
 require('../styles/tableau.scss')
 
 import Card from './Card.js'
+import Column from './Column.js'
 
 export default class Tableau {
   constructor(id) {
     this.el = document.getElementById(id)
     this.card = new Card('card')
     this.card2 = new Card('card2')
+    this.column = new Column('column')
     this.mousePosX = 0
     this.mousePosY = 0
     this.mouseOffsetX = 0
@@ -31,6 +33,9 @@ export default class Tableau {
   }
 
   mouseup(e) {
+    if (this.column.contains(this.mousePosX, this.mousePosY)) {
+      this.column.addCard(this.card)
+    };
     this.selected = null
   }
 
