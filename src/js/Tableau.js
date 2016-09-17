@@ -1,69 +1,49 @@
 require('../styles/tableau.scss')
 
-import Column from './Column.js'
-
 export default class Tableau {
-  constructor(id) {
-    this.el = document.getElementById(id)
-    this.columns = [
-      new Column('column', this, 1),
-      new Column('column2', this, 2)
-    ]
-    this.mousePosX = 0
-    this.mousePosY = 0
-    this.mouseOffsetX = 0
-    this.mouseOffsetY = 0
-    this.currentCard = null
+  constructor(el, table, id) {
+    this.el = el
+    this.table = table
+    this.id = id
+    this.cards = []
     this.attach()
   }
 
   attach() {
-    this.el.addEventListener('mousemove', this.mousemove.bind(this))
-    this.el.addEventListener('mouseup',    this.mouseup.bind(this))
-    document.addEventListener('moveCard', this.moveCard.bind(this))
+    this.el.addEventListener('mousedown', this.mousedown.bind(this))
   }
 
-  moveCard(e) {
-    let card = e.detail.card
-    this.currentCard = card
-    this.originColumn = e.detail.originColumn
-    this.currentCard.style.zIndex = 100
-    this.mouseOffsetX = this.mousePosX - this.currentCard.offsetLeft;
-    this.mouseOffsetY = this.mousePosY - this.currentCard.offsetTop;
-    // turn on mousemove listener
-  }
-
-  clearMovement() {
-    this.currentCard = null
-    this.originColumn = null
-  }
-
-  mouseup(e) {
-    if (this.currentCard) {
-      let x = this.mousePosX
-      let y = this.mousePosY
-      let newColumn = this.columns.find(function(column) {
-        if (column.contains(x,y)) {
-          return column
-        }
-      })
-      if (newColumn) {
-        newColumn.addCard(this.currentCard)
-        this.clearMovement()
-      } else {
-        // return card to originColumn
-        this.originColumn.addCard(this.currentCard)
-        this.clearMovement()
+  mousedown(e) {
+    if (this.cards.length != 0) {
+      let lastCard = this.cards[this.cards.length - 1]
+      let bounds = lastCard.getBoundingClientRect()
+      let x = e.clientX
+      let y = e.clientY
+      if (y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right) {
+        let ev = new CustomEvent('moveCard', {'detail': {'card': this.cards.pop(), 'originTableau': this}})
+        document.dispatchEvent(ev)
       }
     }
   }
 
-  mousemove(e) {
-    this.mousePosX = window.event.clientX
-    this.mousePosY = window.event.clientY
-    if (this.currentCard !== null) {
-      this.currentCard.style.left = (this.mousePosX - this.mouseOffsetX) + "px";
-      this.currentCard.style.top  = (this.mousePosY - this.mouseOffsetY) + "px";
-    }
+  contains(x,y) {
+    let bounds = this.el.getBoundingClientRect()
+    return y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right
+  }
+
+  hasCard(c) {
+    return this.cards.some(function(card) {
+      return c.id == card.id
+    })
+  }
+
+  addCard(card) {
+    let level = this.cards.length
+    this.cards.push(card)
+    let vertOffset =  50 * level
+    this.el.appendChild(card)
+    card.style.zIndex = level + 10
+    card.style.left = '0px'
+    card.style.top = vertOffset + 'px'
   }
 }

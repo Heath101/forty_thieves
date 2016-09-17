@@ -1,5 +1,5 @@
-import Tableau from './js/Tableau.js'
+import Table from './js/Table.js'
 
 window.emitter = {}
 
-new Tableau('tableau')
+new Table('table')
