@@ -1,3 +1,5 @@
+import Card from './Card.js'
+
 export default class Deck {
   constructor() { }
 
@@ -11,7 +13,8 @@ export default class Deck {
       vals.forEach(function(val) {
         let card = document.createElement('div')
         card.className = 'card ' + suit + '-' + val;
-        cards.push(card)
+
+        cards.push(new Card(card, suit, val))
       })
     }
     return cards

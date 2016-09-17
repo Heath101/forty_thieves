@@ -50,9 +50,9 @@ export default class Table {
     let card = e.detail.card
     this.currentCard = card
     this.originTableau = e.detail.originTableau
-    this.currentCard.style.zIndex = 100
-    this.mouseOffsetX = this.mousePosX - this.currentCard.offsetLeft;
-    this.mouseOffsetY = this.mousePosY - this.currentCard.offsetTop;
+    this.currentCard.el.style.zIndex = 100
+    this.mouseOffsetX = this.mousePosX - this.currentCard.el.offsetLeft;
+    this.mouseOffsetY = this.mousePosY - this.currentCard.el.offsetTop;
     // turn on mousemove listener
   }
 
@@ -85,8 +85,8 @@ export default class Table {
     this.mousePosX = window.event.clientX
     this.mousePosY = window.event.clientY
     if (this.currentCard !== null) {
-      this.currentCard.style.left = (this.mousePosX - this.mouseOffsetX) + "px";
-      this.currentCard.style.top  = (this.mousePosY - this.mouseOffsetY) + "px";
+      this.currentCard.el.style.left = (this.mousePosX - this.mouseOffsetX) + "px";
+      this.currentCard.el.style.top  = (this.mousePosY - this.mouseOffsetY) + "px";
     }
   }
 }

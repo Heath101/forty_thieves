@@ -16,7 +16,7 @@ export default class Tableau {
   mousedown(e) {
     if (this.cards.length != 0) {
       let lastCard = this.cards[this.cards.length - 1]
-      let bounds = lastCard.getBoundingClientRect()
+      let bounds = lastCard.el.getBoundingClientRect()
       let x = e.clientX
       let y = e.clientY
       if (y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right) {
@@ -41,9 +41,9 @@ export default class Tableau {
     let level = this.cards.length
     this.cards.push(card)
     let vertOffset =  50 * level
-    this.el.appendChild(card)
-    card.style.zIndex = level + 10
-    card.style.left = '0px'
-    card.style.top = vertOffset + 'px'
+    this.el.appendChild(card.el)
+    card.el.style.zIndex = level + 10
+    card.el.style.left = '0px'
+    card.el.style.top = vertOffset + 'px'
   }
 }
