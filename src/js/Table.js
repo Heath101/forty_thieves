@@ -9,6 +9,7 @@ export default class Table {
     this.el = document.getElementById(id)
     this.tableaus = this.createTableaus()
     this.cards = Deck.generateDeck()
+    Deck.shuffle(this.cards)
     this.distributeCards()
     this.mousePosX = 0
     this.mousePosY = 0
