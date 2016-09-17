@@ -1,16 +1,13 @@
 require('../styles/tableau.scss')
 
-import Card from './Card.js'
 import Column from './Column.js'
 
 export default class Tableau {
   constructor(id) {
     this.el = document.getElementById(id)
-    this.card = new Card('card', 1)
-    this.card2 = new Card('card2', 2)
     this.columns = [
-      new Column('column'),
-      new Column('column2')
+      new Column('column', this, 1),
+      new Column('column2', this, 2)
     ]
     this.mousePosX = 0
     this.mousePosY = 0
@@ -21,43 +18,52 @@ export default class Tableau {
   }
 
   attach() {
-    this.card.el.addEventListener('mousedown', this.mousedown.bind(this, this.card))
-    this.card2.el.addEventListener('mousedown', this.mousedown.bind(this, this.card2))
     this.el.addEventListener('mousemove', this.mousemove.bind(this))
     this.el.addEventListener('mouseup',    this.mouseup.bind(this))
+    document.addEventListener('moveCard', this.moveCard.bind(this))
   }
 
-  mousedown(card, e) {
-    // console.log("Tableau got mousedown");
-    e.preventDefault()
-    e.stopPropagation()
-    this.columns.forEach( function(col, idx) {
-      if (col.hasCard(card)) { col.removeCard(card) }
-    }, this)
+  moveCard(e) {
+    let card = e.detail.card
     this.currentCard = card
-    this.currentCard.el.style.zIndex = 100
-    this.mouseOffsetX = this.mousePosX - this.currentCard.el.offsetLeft;
-    this.mouseOffsetY = this.mousePosY - this.currentCard.el.offsetTop;
+    this.originColumn = e.detail.originColumn
+    this.currentCard.style.zIndex = 100
+    this.mouseOffsetX = this.mousePosX - this.currentCard.offsetLeft;
+    this.mouseOffsetY = this.mousePosY - this.currentCard.offsetTop;
+    // turn on mousemove listener
+  }
+
+  clearMovement() {
+    this.currentCard = null
+    this.originColumn = null
   }
 
   mouseup(e) {
-    let x = this.mousePosX
-    let y = this.mousePosY
     if (this.currentCard) {
-      this.columns.forEach( function(col, idx) {
-        if (col.contains(x,y)) { col.addCard(this.currentCard) }
-      }, this)
+      let x = this.mousePosX
+      let y = this.mousePosY
+      let newColumn = this.columns.find(function(column) {
+        if (column.contains(x,y)) {
+          return column
+        }
+      })
+      if (newColumn) {
+        newColumn.addCard(this.currentCard)
+        this.clearMovement()
+      } else {
+        // return card to originColumn
+        this.originColumn.addCard(this.currentCard)
+        this.clearMovement()
+      }
     }
-    this.currentCard = null
   }
 
   mousemove(e) {
     this.mousePosX = window.event.clientX
     this.mousePosY = window.event.clientY
-
     if (this.currentCard !== null) {
-      this.currentCard.el.style.left = (this.mousePosX - this.mouseOffsetX) + "px";
-      this.currentCard.el.style.top  = (this.mousePosY - this.mouseOffsetY) + "px";
+      this.currentCard.style.left = (this.mousePosX - this.mouseOffsetX) + "px";
+      this.currentCard.style.top  = (this.mousePosY - this.mouseOffsetY) + "px";
     }
   }
 }
