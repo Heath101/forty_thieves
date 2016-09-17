@@ -1,10 +1,9 @@
 require('../styles/tableau.scss')
 
 export default class Tableau {
-  constructor(el, table, id) {
+  constructor(el, table) {
     this.el = el
     this.table = table
-    this.id = id
     this.cards = []
     this.attach()
   }

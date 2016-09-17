@@ -36,7 +36,7 @@ export default class Table {
       let tab = document.createElement('div')
       tab.className = 'tableau'
       tabsEl.appendChild(tab)
-      tabs.push(new Tableau(tab, this, 0) )
+      tabs.push(new Tableau(tab, this) )
     }
     this.el.appendChild(tabsEl)
     return tabs
