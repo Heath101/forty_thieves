@@ -92,10 +92,10 @@ export default class Table {
       })
       if (!dropZone) {
         dropZone = this.foundations.find(function(foundation) {
-          if (foundation.contains(x,y)) {
+          if (foundation.willAccept(this.currentCard,x,y)) {
             return foundation
           }
-        })
+        }.bind(this))
       }
       if (dropZone) {
         dropZone.addCard(this.currentCard)
