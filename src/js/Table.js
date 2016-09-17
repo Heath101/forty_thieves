@@ -1,12 +1,14 @@
 require('../styles/table.scss')
 
 import Tableau from './Tableau.js'
-import Card from './Card.js'
 import Deck from './Deck.js'
+import Foundation from './Foundation.js'
 
 export default class Table {
   constructor(id) {
     this.el = document.getElementById(id)
+    this.el = document.getElementById(id)
+    this.foundations = this.createFoundations()
     this.tableaus = this.createTableaus()
     this.cards = Deck.generateDeck()
     Deck.shuffle(this.cards)
@@ -27,13 +29,31 @@ export default class Table {
 
   createTableaus() {
     let tabs = []
+    let tabsEl = document.createElement('div')
+    tabsEl.className = 'tableaus'
+
     for(let i = 1; i <= 10; i++) {
       let tab = document.createElement('div')
       tab.className = 'tableau'
-      this.el.appendChild(tab)
+      tabsEl.appendChild(tab)
       tabs.push(new Tableau(tab, this, 0) )
     }
+    this.el.appendChild(tabsEl)
     return tabs
+  }
+
+  createFoundations() {
+    let foundations = []
+    let foundationsEl = document.createElement('div')
+    foundationsEl.className = 'foundations'
+    for(let i = 1; i <= 8; i++) {
+      let foundation = document.createElement('div')
+      foundation.className = 'foundation'
+      foundationsEl.appendChild(foundation)
+      foundations.push(new Foundation(foundation, this) )
+    }
+    this.el.appendChild(foundationsEl)
+    return foundations
   }
 
   distributeCards() {
