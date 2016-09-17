@@ -2,12 +2,13 @@ require('../styles/table.scss')
 
 import Tableau from './Tableau.js'
 import Card from './Card.js'
+import Deck from './Deck.js'
 
 export default class Table {
   constructor(id) {
     this.el = document.getElementById(id)
     this.tableaus = this.createTableaus()
-    this.cards = this.createCards()
+    this.cards = Deck.generateDeck()
     this.distributeCards()
     this.mousePosX = 0
     this.mousePosY = 0
@@ -24,32 +25,21 @@ export default class Table {
   }
 
   createTableaus() {
-    let cols = []
+    let tabs = []
     for(let i = 1; i <= 10; i++) {
-      let col = document.createElement('div')
-      col.className = 'tableau'
-      this.el.appendChild(col)
-      cols.push(new Tableau(col, this, 0) )
+      let tab = document.createElement('div')
+      tab.className = 'tableau'
+      this.el.appendChild(tab)
+      tabs.push(new Tableau(tab, this, 0) )
     }
-    return cols
-  }
-
-  createCards() {
-    let cards = []
-    for(let i = 1; i <= 104; i++) {
-      let card = document.createElement('div')
-      card.className = 'card'
-      this.el.appendChild(card)
-      cards.push(card)
-    }
-    return cards
+    return tabs
   }
 
   distributeCards() {
     let i = 1
     while (i <= 4) {
-      for(let col of this.tableaus) {
-        col.addCard(this.cards.pop())
+      for(let tab of this.tableaus) {
+        tab.addCard(this.cards.pop())
       }
       i++
     }
