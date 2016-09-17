@@ -85,13 +85,20 @@ export default class Table {
     if (this.currentCard) {
       let x = this.mousePosX
       let y = this.mousePosY
-      let newTableau = this.tableaus.find(function(tableau) {
+      let dropZone = this.tableaus.find(function(tableau) {
         if (tableau.contains(x,y)) {
           return tableau
         }
       })
-      if (newTableau) {
-        newTableau.addCard(this.currentCard)
+      if (!dropZone) {
+        dropZone = this.foundations.find(function(foundation) {
+          if (foundation.contains(x,y)) {
+            return foundation
+          }
+        })
+      }
+      if (dropZone) {
+        dropZone.addCard(this.currentCard)
         this.clearMovement()
       } else {
         // return card to originTableau
