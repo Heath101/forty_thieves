@@ -3,7 +3,7 @@ import Card from './Card.js'
 export default class Deck {
   constructor() { }
 
-  static generateDeck() {
+  static generate() {
     let cards = []
     let suits = ['spades','diamonds','hearts','clubs']
     let values = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king']

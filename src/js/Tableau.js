@@ -10,7 +10,7 @@ export default class Tableau {
     this.el = document.getElementById(id)
     this.foundations = this.createFoundations()
     this.cascades = this.createCascades()
-    this.cards = Deck.generateDeck().concat(Deck.generateDeck())
+    this.cards = Deck.generate().concat(Deck.generate())
     Deck.shuffle(this.cards)
     this.distributeCards()
     this.mousePosX = 0
