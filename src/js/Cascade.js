@@ -31,9 +31,7 @@ export default class Cascade {
   }
 
   hasCard(c) {
-    return this.cards.some(function(card) {
-      return c.id == card.id
-    })
+    return this.cards.some((card) => c.id == card.id )
   }
 
   addCard(card) {

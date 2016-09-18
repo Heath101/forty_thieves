@@ -11,9 +11,9 @@ export default class Deck {
     while (suits.length != 0) {
       let suit = suits.pop()
       let rank = 1
-      values.forEach(function(value) {
+      values.forEach((value) => {
         let card = document.createElement('div')
-        card.className = 'card ' + suit + '-' + value;
+        card.className = `card ${suit}-${value}`
 
         cards.push(new Card(card, suit, value, rank))
         rank += 1

@@ -85,7 +85,7 @@ export default class Tableau {
     if (this.currentCard) {
       let x = this.mousePosX
       let y = this.mousePosY
-      let dropZone = this.cascades.find(function(cascade) {
+      let dropZone = this.cascades.find((cascade) => {
         if (cascade.contains(x,y)) {
           return cascade
         }
@@ -112,8 +112,8 @@ export default class Tableau {
     this.mousePosX = window.event.clientX
     this.mousePosY = window.event.clientY
     if (this.currentCard !== null) {
-      this.currentCard.el.style.left = (this.mousePosX - this.mouseOffsetX) + "px";
-      this.currentCard.el.style.top  = (this.mousePosY - this.mouseOffsetY) + "px";
+      this.currentCard.el.style.left = `${this.mousePosX - this.mouseOffsetX}px`;
+      this.currentCard.el.style.top  = `${this.mousePosY - this.mouseOffsetY}px`;
     }
   }
 }
