@@ -6,24 +6,16 @@ export default class Foundation {
     this.table = table
     this.suit = null
     this.cards = []
-    this.order = [
-      'ace','2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king'
-    ]
+    this.currentRank = 0
   }
 
   attach() {}
 
   willAccept(card, x,y) {
-    if (this.inDropZone(x,y)) {
-      if (this.suit == null) {
-        if (card.value == 'ace') {
+    if (this.inDropZone(x,y) && this.currentRank <= 13) {
+      if ((this.suit == card.suit) || (this.suit == null)) {
+        if (this.currentRank + 1 == card.rank) {
           this.suit = card.suit
-          return true
-        }
-      } else if (card.suit == this.suit) {
-        let lastCard = this.cards[this.cards.length - 1]
-        let currentIdx = this.order.indexOf(lastCard.value)
-        if (this.order[currentIdx + 1] == card.value) {
           return true
         }
       }
@@ -33,6 +25,7 @@ export default class Foundation {
 
   addCard(card) {
     this.cards.push(card)
+    this.currentRank = card.rank
     this.el.appendChild(card.el)
     card.el.style.zIndex = this.cards.length + 20
     card.el.style.left = '0px'

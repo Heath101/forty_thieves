@@ -58,7 +58,7 @@ export default class Table {
 
   distributeCards() {
     let i = 1
-    while (i <= 4) {
+    while (i <=4) {
       for(let tab of this.tableaus) {
         tab.addCard(this.cards.pop())
       }
