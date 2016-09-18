@@ -1,9 +1,9 @@
 require('../styles/foundation.scss')
 
 export default class Foundation {
-  constructor(el, table) {
+  constructor(el, tableau) {
     this.el = el
-    this.table = table
+    this.tableau = tableau
     this.suit = null
     this.cards = []
     this.currentRank = 0
