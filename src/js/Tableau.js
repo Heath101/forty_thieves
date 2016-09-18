@@ -86,7 +86,7 @@ export default class Tableau {
       let x = this.mousePosX
       let y = this.mousePosY
       let dropZone = this.cascades.find((cascade) => {
-        if (cascade.contains(x,y)) {
+        if (cascade.willAccept(this.currentCard,x,y)) {
           return cascade
         }
       })

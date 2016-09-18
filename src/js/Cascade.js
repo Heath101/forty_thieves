@@ -25,13 +25,8 @@ export default class Cascade {
     }
   }
 
-  contains(x,y) {
-    let bounds = this.el.getBoundingClientRect()
-    return y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right
-  }
-
-  hasCard(c) {
-    return this.cards.some((card) => c.id == card.id )
+  willAccept(card,x,y) {
+    return this.inDropZone(x,y)
   }
 
   addCard(card) {
@@ -42,5 +37,10 @@ export default class Cascade {
     card.el.style.zIndex = level + 10
     card.el.style.left = '0px'
     card.el.style.top = vertOffset + 'px'
+  }
+
+  inDropZone(x,y) {
+    let bounds = this.el.getBoundingClientRect()
+    return y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right
   }
 }
