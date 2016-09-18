@@ -6,15 +6,17 @@ export default class Deck {
   static generateDeck() {
     let cards = []
     let suits = ['spades','diamonds','hearts','clubs']
-    let vals = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king']
+    let values = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king']
 
     while (suits.length != 0) {
       let suit = suits.pop()
-      vals.forEach(function(val) {
+      let rank = 1
+      values.forEach(function(value) {
         let card = document.createElement('div')
-        card.className = 'card ' + suit + '-' + val;
+        card.className = 'card ' + suit + '-' + value;
 
-        cards.push(new Card(card, suit, val))
+        cards.push(new Card(card, suit, value, rank))
+        rank += 1
       })
     }
     return cards
