@@ -4,7 +4,7 @@ require('../styles/waste.scss')
 import Cascade from './Cascade.js'
 import Deck from './Deck.js'
 import Foundation from './Foundation.js'
-import Stock from './Stock.js'
+import PlayArea from './PlayArea.js'
 
 export default class Tableau {
   constructor(id) {
@@ -13,10 +13,13 @@ export default class Tableau {
     let cards = Deck.generate().concat(Deck.generate())
     Deck.shuffle(cards)
     this.foundations = this.createFoundations()
-    this.stock = this.createStock(cards)
+
+    this.playArea = this.createPlayArea()
+
     this.createWaste()
     this.cascades = this.createCascades()
-    this.distributeCards(this.stock)
+    this.distributeCards(cards)
+    this.playArea.addStock(cards)
     this.mousePosX = 0
     this.mousePosY = 0
     this.mouseOffsetX = 0
@@ -60,12 +63,11 @@ export default class Tableau {
     return foundations
   }
 
-  createStock(cards) {
-    let stock = new Stock(cards)
-    let stockEl = document.createElement('div')
-    stockEl.className = 'stock'
-    this.el.appendChild(stockEl)
-    return stock
+  createPlayArea() {
+    let playAreaEl = document.createElement('div')
+    playAreaEl.className = 'play-area'
+    this.el.appendChild(playAreaEl)
+    return new PlayArea(playAreaEl)
   }
 
   createWaste() {

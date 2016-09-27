@@ -1,11 +1,22 @@
 require('../styles/stock.scss')
 
 export default class Stock {
-  constructor(cards) {
-    this.stock = cards
+  constructor(el, playArea) {
+    this.stock = []
+    this.playArea = playArea
+    this.el = el
+    this.attach()
   }
 
-  pop() {
-    return this.stock.pop()
+  attach() {
+    this.el.addEventListener('click', this.click.bind(this))
+  }
+
+  click(e) {
+    this.playArea.play(this.stock.pop())
+  }
+
+  add(cards) {
+    this.stock = cards
   }
 }
