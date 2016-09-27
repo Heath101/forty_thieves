@@ -5,5 +5,10 @@
   background: url("../images/playing-card-back.png");
   background-size: 128px 186px;
   margin-right: 20px;
-  display: inline-block;
+  display: flex;
+  float: left;
+  color: rgba(0,0,0,.8);
+  font-size: 58px;
+  align-items: center;
+  justify-content: center;
 }

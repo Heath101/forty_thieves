@@ -38,7 +38,7 @@ export default class Cascade {
   addCard(card) {
     let level = this.cards.length
     this.cards.push(card)
-    let vertOffset =  50 * level
+    let vertOffset =  44 * level
     this.el.appendChild(card.el)
     card.el.style.zIndex = level + 10
     card.el.style.left = '0px'

@@ -15,6 +15,7 @@ export default class Stock {
   click(e) {
     if (this.stock.length != 0) {
       this.playArea.play(this.stock.pop())
+      this.el.innerHTML = this.stock.length
     } else {
       this.el.style.background = "rgba(0,0,0,.3)";
     }
