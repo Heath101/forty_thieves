@@ -35,7 +35,7 @@ export default class FortyThieves {
       let foundation = document.createElement('div')
       foundation.className = 'foundation'
       foundationsEl.appendChild(foundation)
-      foundations.push(new Foundation(foundation, this) )
+      foundations.push(new Foundation(foundation) )
     }
     this.el.appendChild(foundationsEl)
     return foundations

@@ -10,7 +10,7 @@ export default class Card {
   }
 
   attach() {
-    this.el.addEventListener('click', this.click.bind(this))
+    // this.el.addEventListener('click', this.click.bind(this))
   }
 
   click() {
