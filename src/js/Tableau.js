@@ -1,4 +1,5 @@
 require('../styles/tableau.scss')
+require('../styles/waste.scss')
 
 import Cascade from './Cascade.js'
 import Deck from './Deck.js'
@@ -13,6 +14,7 @@ export default class Tableau {
     Deck.shuffle(cards)
     this.foundations = this.createFoundations()
     this.stock = this.createStock(cards)
+    this.createWaste()
     this.cascades = this.createCascades()
     this.distributeCards(this.stock)
     this.mousePosX = 0
@@ -64,6 +66,13 @@ export default class Tableau {
     stockEl.className = 'stock'
     this.el.appendChild(stockEl)
     return stock
+  }
+
+  createWaste() {
+    let wasteEl = document.createElement('div')
+    wasteEl.className = 'waste'
+    this.el.appendChild(wasteEl)
+    return []
   }
 
   distributeCards(stock) {
