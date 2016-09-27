@@ -13,7 +13,11 @@ export default class Stock {
   }
 
   click(e) {
-    this.playArea.play(this.stock.pop())
+    if (this.stock.length != 0) {
+      this.playArea.play(this.stock.pop())
+    } else {
+      this.el.style.background = "rgba(0,0,0,.3)";
+    }
   }
 
   add(cards) {
