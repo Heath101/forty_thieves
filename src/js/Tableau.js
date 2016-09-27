@@ -90,7 +90,7 @@ export default class Tableau {
   moveCard(e) {
     let card = e.detail.card
     this.currentCard = card
-    this.originCascade = e.detail.originCascade
+    this.origin = e.detail.origin
     this.currentCard.el.style.zIndex = 100
     this.mouseOffsetX = this.mousePosX - this.currentCard.el.offsetLeft;
     this.mouseOffsetY = this.mousePosY - this.currentCard.el.offsetTop;
@@ -99,7 +99,7 @@ export default class Tableau {
 
   clearMovement() {
     this.currentCard = null
-    this.originCascade = null
+    this.origin = null
   }
 
   mouseup(e) {
@@ -122,8 +122,8 @@ export default class Tableau {
         dropZone.addCard(this.currentCard)
         this.clearMovement()
       } else {
-        // return card to originCascade
-        this.originCascade.addCard(this.currentCard)
+        // return card to origin
+        this.origin.addCard(this.currentCard)
         this.clearMovement()
       }
     }

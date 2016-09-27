@@ -9,14 +9,23 @@ export default class Waste {
   }
 
   attach() {
-    // this.el.addEventListener('click', this.click.bind(this))
+    this.el.addEventListener('mousedown', this.mousedown.bind(this))
   }
 
-  // click(e) {
-  //   this.playArea.play(this.stock.pop())
-  // }
+  mousedown(e) {
+    if (this.waste.length != 0) {
+      let lastCard = this.waste [this.waste .length - 1]
+      let bounds = lastCard.el.getBoundingClientRect()
+      let x = e.clientX
+      let y = e.clientY
+      if (y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right) {
+        let ev = new CustomEvent('moveCard', {'detail': {'card': this.waste .pop(), 'origin': this}})
+        document.dispatchEvent(ev)
+      }
+    }
+  }
 
-  play(card) {
+  addCard(card) {
     let level = this.waste.length
     this.waste.push(card)
 

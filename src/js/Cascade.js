@@ -19,7 +19,7 @@ export default class Cascade {
       let x = e.clientX
       let y = e.clientY
       if (y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right) {
-        let ev = new CustomEvent('moveCard', {'detail': {'card': this.cards.pop(), 'originCascade': this}})
+        let ev = new CustomEvent('moveCard', {'detail': {'card': this.cards.pop(), 'origin': this}})
         document.dispatchEvent(ev)
       }
     }

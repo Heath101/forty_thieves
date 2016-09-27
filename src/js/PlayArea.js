@@ -36,6 +36,6 @@ export default class PlayArea {
   }
 
   play(card) {
-    this.waste.play(card)
+    this.waste.addCard(card)
   }
 }
