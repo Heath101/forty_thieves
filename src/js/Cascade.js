@@ -26,7 +26,12 @@ export default class Cascade {
   }
 
   willAccept(card,x,y) {
-    return this.inDropZone(x,y)
+    let topCard = this.cards[this.cards.length - 1]
+    if (this.inDropZone(x,y) &&
+        topCard.suit == card.suit &&
+        topCard.rank - 1 == card.rank
+      ) { return true }
+    return false
   }
 
   addCard(card) {
