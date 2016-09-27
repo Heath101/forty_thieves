@@ -1,5 +1,4 @@
-import Tableau from './js/Tableau.js'
+import FortyThieves from './js/FortyThieves.js'
 
-window.emitter = {}
-
-new Tableau('tableau')
+let game = new FortyThieves()
+game.init(document.getElementById('game'))

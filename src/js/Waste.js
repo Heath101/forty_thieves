@@ -1,4 +1,4 @@
-// require('../styles/stock.scss')
+require('../styles/waste.scss')
 
 export default class Waste {
   constructor(el, playArea) {
