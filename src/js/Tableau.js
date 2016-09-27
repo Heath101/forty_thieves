@@ -15,8 +15,6 @@ export default class Tableau {
     this.foundations = this.createFoundations()
 
     this.playArea = this.createPlayArea()
-
-    this.createWaste()
     this.cascades = this.createCascades()
     this.distributeCards(cards)
     this.playArea.addStock(cards)
@@ -68,13 +66,6 @@ export default class Tableau {
     playAreaEl.className = 'play-area'
     this.el.appendChild(playAreaEl)
     return new PlayArea(playAreaEl)
-  }
-
-  createWaste() {
-    let wasteEl = document.createElement('div')
-    wasteEl.className = 'waste'
-    this.el.appendChild(wasteEl)
-    return []
   }
 
   distributeCards(stock) {
