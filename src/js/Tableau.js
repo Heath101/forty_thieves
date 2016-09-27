@@ -3,16 +3,18 @@ require('../styles/tableau.scss')
 import Cascade from './Cascade.js'
 import Deck from './Deck.js'
 import Foundation from './Foundation.js'
+import Stock from './Stock.js'
 
 export default class Tableau {
   constructor(id) {
     this.el = document.getElementById(id)
     this.el = document.getElementById(id)
+    let cards = Deck.generate().concat(Deck.generate())
+    Deck.shuffle(cards)
     this.foundations = this.createFoundations()
+    this.stock = this.createStock(cards)
     this.cascades = this.createCascades()
-    this.cards = Deck.generate().concat(Deck.generate())
-    Deck.shuffle(this.cards)
-    this.distributeCards()
+    this.distributeCards(this.stock)
     this.mousePosX = 0
     this.mousePosY = 0
     this.mouseOffsetX = 0
@@ -56,11 +58,19 @@ export default class Tableau {
     return foundations
   }
 
-  distributeCards() {
+  createStock(cards) {
+    let stock = new Stock(cards)
+    let stockEl = document.createElement('div')
+    stockEl.className = 'stock'
+    this.el.appendChild(stockEl)
+    return stock
+  }
+
+  distributeCards(stock) {
     let i = 1
     while (i <=4) {
       for(let tab of this.cascades) {
-        tab.addCard(this.cards.pop())
+        tab.addCard(stock.pop())
       }
       i++
     }
