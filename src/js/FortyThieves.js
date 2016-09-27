@@ -50,7 +50,7 @@ export default class FortyThieves {
       let cascade = document.createElement('div')
       cascade.className = 'cascade'
       cascadesEl.appendChild(cascade)
-      cascades.push(new Cascade(cascade, this) )
+      cascades.push(new Cascade(cascade) )
     }
     this.el.appendChild(cascadesEl)
     return cascades

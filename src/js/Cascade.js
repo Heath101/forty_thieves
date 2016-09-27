@@ -1,9 +1,8 @@
 require('../styles/cascade.scss')
 
 export default class Cascade {
-  constructor(el, tableau) {
+  constructor(el) {
     this.el = el
-    this.tableau = tableau
     this.cards = []
     this.attach()
   }

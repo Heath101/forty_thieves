@@ -6,6 +6,19 @@ export default class Card {
     this.suit = suit
     this.value = value
     this.rank = rank
+    this.attach()
+  }
+
+  attach() {
+    this.el.addEventListener('click', this.click.bind(this))
+  }
+
+  click() {
+    if (this.el.classList.contains('selected')) {
+      this.el.classList.remove('selected')
+    } else {
+      this.el.classList.add('selected')
+    }
   }
 
   static createCard() {

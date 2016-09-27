@@ -1,9 +1,6 @@
-require('../styles/tableau.scss')
-
 export default class MovementHandler {
   constructor(el) {
     this.el = el
-    this.el.className = 'tableau';
     this.dropZones = []
     this.mousePosX = 0
     this.mousePosY = 0
