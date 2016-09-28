@@ -4,38 +4,37 @@ import Stock from './Stock.js'
 import Waste from './Waste.js'
 
 export default class PlayArea {
-  constructor(el) {
+  constructor(el, moveList) {
     this.el = el
-    this.stock = this.createStock()
-    this.waste = this.createWaste()
-    this.attach()
-  }
-
-  attach() {
-    // this.el.addEventListener('click', ()=> {
-    //   console.log("stock called");
-    // })
+    this.moveList = moveList
+    this.stock = this.create(Stock, 'stock')
+    this.waste = this.create(Waste, 'waste')
   }
 
   addStock(cards) {
-    this.stock.add(cards)
+    this.stock.populate(cards)
   }
 
-  createStock() {
-    let stockEl = document.createElement('div')
-    stockEl.className = 'stock'
-    this.el.appendChild(stockEl)
-    return new Stock(stockEl, this)
-  }
-
-  createWaste() {
-    let wasteEl = document.createElement('div')
-    wasteEl.className = 'waste'
-    this.el.appendChild(wasteEl)
-    return new Waste(wasteEl, this)
+  create(type, styleClass) {
+    let el = document.createElement('div')
+    el.className = styleClass
+    this.el.appendChild(el)
+    return new type(el, this)
   }
 
   play(card) {
+    this.moveList.add({
+      move: this.moveStockToWaste.bind(this, card),
+      undo: this.moveCardToStock.bind(this,card)
+    })
+  }
+
+  moveStockToWaste(card) {
     this.waste.add(card)
+  }
+
+  moveCardToStock(card) {
+    this.stock.add(card)
+    this.waste.removeCard()
   }
 }

@@ -21,7 +21,12 @@ export default class Stock {
     }
   }
 
-  add(cards) {
+  add(card) {
+    this.stock.push(card)
+    this.el.innerHTML = this.stock.length
+  }
+
+  populate(cards) {
     this.stock = cards
   }
 }

@@ -3,6 +3,7 @@ import MovementHandler from './MovementHandler.js'
 import PlayArea        from './PlayArea.js'
 import Foundation      from './Foundation.js'
 import Cascade         from './Cascade.js'
+import MoveList        from './MoveList.js'
 
 export default class FortyThieves {
 
@@ -24,7 +25,7 @@ export default class FortyThieves {
     let playAreaEl = document.createElement('div')
     playAreaEl.className = 'play-area'
     this.el.appendChild(playAreaEl)
-    return new PlayArea(playAreaEl)
+    return new PlayArea(playAreaEl, window.moveList)
   }
 
   createFoundations() {

@@ -35,4 +35,10 @@ export default class Waste {
     card.el.style.left = horizontalOffset + 'px'
     card.el.style.top = '0px'
   }
+
+  removeCard() {
+    let card = this.waste.pop()
+    this.el.removeChild(card.el)
+    return card
+  }
 }
