@@ -35,6 +35,6 @@ export default class PlayArea {
 
   moveCardToStock(card) {
     this.stock.add(card)
-    this.waste.removeCard()
+    this.waste.draw()
   }
 }

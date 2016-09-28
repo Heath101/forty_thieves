@@ -10,7 +10,7 @@ export default class MoveList {
 
   undo() {
     if (this.moveList.length > 0) {
-      this.moveList.pop().undo()
+      this.moveList.pop().undo()       
     }
   }
 }

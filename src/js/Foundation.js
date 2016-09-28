@@ -1,34 +1,16 @@
 require('../styles/foundation.scss')
 
-export default class Foundation {
+import CardPile from './CardPile.js'
+
+export default class Foundation extends CardPile {
   constructor(el) {
-    this.el = el
+    super(el)
     this.suit = null
-    this.cards = []
     this.currentRank = 0
-    this.attach()
   }
 
-  attach() {
-    this.el.addEventListener('mousedown', this.mousedown.bind(this))
-  }
-
-  mousedown(e) {
-    if (this.cards.length != 0) {
-      let lastCard = this.cards [this.cards .length - 1]
-      let bounds = lastCard.el.getBoundingClientRect()
-      let x = e.clientX
-      let y = e.clientY
-      if (y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right) {
-        let ev = new CustomEvent('moveCard', {'detail': {'card': this.cards .pop(), 'origin': this}})
-        document.dispatchEvent(ev)
-      }
-    }
-  }
-
-
-  willAccept(card, x,y) {
-    if (this.inDropZone(x,y) && this.currentRank <= 13) {
+  willAccept(card) {
+    if (this.currentRank <= 13) {
       if ((this.suit == card.suit) || (this.suit == null)) {
         if (this.currentRank + 1 == card.rank) {
           this.suit = card.suit
@@ -48,8 +30,13 @@ export default class Foundation {
     card.el.style.top = '0px'
   }
 
-  inDropZone(x,y) {
-    let bounds = this.el.getBoundingClientRect()
-    return y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right
+  draw() {
+    let card = this.cards.pop()
+    this.el.removeChild(card.el)
+    if (this.cards.length == 0) {
+      this.suit = null
+      this.currentRank = 0
+    }
+    return card
   }
 }

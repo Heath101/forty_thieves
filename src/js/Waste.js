@@ -1,33 +1,16 @@
 require('../styles/waste.scss')
 
-export default class Waste {
+import CardPile from './CardPile.js'
+
+export default class Waste extends CardPile {
   constructor(el, playArea) {
-    this.waste = []
+    super(el)
     this.playArea = playArea
-    this.el = el
-    this.attach()
-  }
-
-  attach() {
-    this.el.addEventListener('mousedown', this.mousedown.bind(this))
-  }
-
-  mousedown(e) {
-    if (this.waste.length != 0) {
-      let lastCard = this.waste [this.waste .length - 1]
-      let bounds = lastCard.el.getBoundingClientRect()
-      let x = e.clientX
-      let y = e.clientY
-      if (y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right) {
-        let ev = new CustomEvent('moveCard', {'detail': {'card': this.waste .pop(), 'origin': this}})
-        document.dispatchEvent(ev)
-      }
-    }
   }
 
   add(card) {
-    let level = this.waste.length
-    this.waste.push(card)
+    let level = this.cards.length
+    this.cards.push(card)
 
     let horizontalOffset =  24 * level
     this.el.appendChild(card.el)
@@ -36,9 +19,5 @@ export default class Waste {
     card.el.style.top = '0px'
   }
 
-  removeCard() {
-    let card = this.waste.pop()
-    this.el.removeChild(card.el)
-    return card
-  }
+  willAccept(card) { return false }
 }

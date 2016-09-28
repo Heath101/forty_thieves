@@ -9,5 +9,5 @@ game.init(document.getElementById('game'))
 
 let undo = document.getElementById('undo')
 undo.addEventListener('click', e => {
-  let move = window.moveList.undo()
+  window.moveList.undo()
 })

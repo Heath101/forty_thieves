@@ -1,32 +1,28 @@
 require('../styles/stock.scss')
 
-export default class Stock {
-  constructor(el, playArea) {
-    this.stock = []
-    this.playArea = playArea
-    this.el = el
-    this.attach()
-  }
+import CardPile from './CardPile.js'
 
-  attach() {
-    this.el.addEventListener('click', this.click.bind(this))
+export default class Stock extends CardPile {
+  constructor(el, playArea) {
+    super(el)
+    this.playArea = playArea
   }
 
   click(e) {
-    if (this.stock.length != 0) {
-      this.playArea.play(this.stock.pop())
-      this.el.innerHTML = this.stock.length
+    if (this.cards.length != 0) {
+      this.playArea.play(this.cards.pop())
+      this.el.innerHTML = this.cards.length
     } else {
       this.el.style.background = "rgba(0,0,0,.3)";
     }
   }
 
   add(card) {
-    this.stock.push(card)
-    this.el.innerHTML = this.stock.length
+    this.cards.push(card)
+    this.el.innerHTML = this.cards.length
   }
 
   populate(cards) {
-    this.stock = cards
+    this.cards = cards
   }
 }
