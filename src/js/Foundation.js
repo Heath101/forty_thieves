@@ -39,7 +39,7 @@ export default class Foundation {
     return false
   }
 
-  addCard(card) {
+  add(card) {
     this.cards.push(card)
     this.currentRank = card.rank
     this.el.appendChild(card.el)

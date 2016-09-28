@@ -59,7 +59,7 @@ export default class FortyThieves {
   populateCascades(cards, cascades) {
     let i = 1
     while (i <=4) {
-      for(let c of cascades) { c.addCard(cards.pop()) }
+      for(let c of cascades) { c.add(cards.pop()) }
       i++
     }
   }

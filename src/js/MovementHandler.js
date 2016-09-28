@@ -45,11 +45,11 @@ export default class MovementHandler {
         }
       })
       if (dropZone) {
-        dropZone.addCard(this.currentCard)
+        dropZone.add(this.currentCard)
         this.clearMovement()
       } else {
         // return card to origin
-        this.origin.addCard(this.currentCard)
+        this.origin.add(this.currentCard)
         this.clearMovement()
       }
     }

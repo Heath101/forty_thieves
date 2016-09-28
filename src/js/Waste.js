@@ -25,7 +25,7 @@ export default class Waste {
     }
   }
 
-  addCard(card) {
+  add(card) {
     let level = this.waste.length
     this.waste.push(card)
 

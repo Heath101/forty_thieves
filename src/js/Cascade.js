@@ -34,7 +34,7 @@ export default class Cascade {
     return false
   }
 
-  addCard(card) {
+  add(card) {
     let level = this.cards.length
     this.cards.push(card)
     let vertOffset =  44 * level
