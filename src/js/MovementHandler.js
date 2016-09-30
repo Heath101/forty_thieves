@@ -10,6 +10,7 @@ export default class MovementHandler {
 
   attach() {
     document.addEventListener('dropZone:selected', this.dropZoneSelected.bind(this))
+    document.addEventListener('dropZone:deselected', this.dropZoneDeselected.bind(this))
   }
 
   dropZoneSelected(e) {
@@ -25,6 +26,13 @@ export default class MovementHandler {
     } else {
       this.currentOrigin = e.detail.dropZone
       this.currentOrigin.activate()
+    }
+  }
+
+  dropZoneDeselected(e) {
+    if (this.currentOrigin == e.detail.dropZone) {
+      this.currentOrigin.deactivate()
+      this.currentOrigin = null
     }
   }
 

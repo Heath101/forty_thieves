@@ -23,6 +23,8 @@ export default class PlayArea {
   }
 
   play(card) {
+    let ev = new CustomEvent('dropZone:deselected', {'detail': {'dropZone': this.waste}})
+    document.dispatchEvent(ev)
     this.moveList.add({
       move: this.moveStockToWaste.bind(this, card),
       undo: this.moveCardToStock.bind(this,card)
