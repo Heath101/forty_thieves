@@ -11,6 +11,7 @@ export default class MovementHandler {
   attach() {
     document.addEventListener('dropZone:selected', this.dropZoneSelected.bind(this))
     document.addEventListener('dropZone:deselected', this.dropZoneDeselected.bind(this))
+    document.addEventListener('moveUndo', this.clearDropZones.bind(this))
   }
 
   dropZoneSelected(e) {
@@ -19,10 +20,13 @@ export default class MovementHandler {
       let card = this.currentOrigin.lastCard()
       if (target.willAccept(card)) {
         CardPile.move(this.currentOrigin, target)
+        target.deactivate()
+        this.clearDropZones()
+      } else {
+        this.clearDropZones()
+        let ev = new CustomEvent('dropZone:selected', {'detail': {'dropZone': target}})
+        document.dispatchEvent(ev)
       }
-      this.currentOrigin.deactivate()
-      target.deactivate()
-      this.currentOrigin = null
     } else {
       this.currentOrigin = e.detail.dropZone
       this.currentOrigin.activate()
@@ -31,6 +35,12 @@ export default class MovementHandler {
 
   dropZoneDeselected(e) {
     if (this.currentOrigin == e.detail.dropZone) {
+      this.clearDropZones()
+    }
+  }
+
+  clearDropZones() {
+    if (this.currentOrigin) {
       this.currentOrigin.deactivate()
       this.currentOrigin = null
     }

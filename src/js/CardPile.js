@@ -4,6 +4,7 @@ export default class CardPile extends DropZone {
   constructor(el) {
     super(el)
     this.cards = []
+    document.addEventListener('move:undo', this.moveUndo.bind(this))
   }
 
   lastCard() {
@@ -29,13 +30,17 @@ export default class CardPile extends DropZone {
   }
 
   deactivate() {
-    if (this.lastCard()) {
-      this.lastCard().deselect()
-    }
+    this.cards.forEach( card => {
+      card.deselect()
+    })
   }
 
   swap(target) {
     return (function() { target.add(this.draw()) }.bind(this))
+  }
+
+  moveUndo(e) {
+    this.deactivate()
   }
 
   static move(origin, target) {
