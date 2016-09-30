@@ -9,16 +9,14 @@ export default class Stock extends CardPile {
   }
 
   click(e) {
-    if (this.cards.length != 0) {
-      this.playArea.play(this.cards.pop())
-      this.el.innerHTML = this.cards.length
-    } else {
-      this.el.style.background = "rgba(0,0,0,.3)";
-    }
+    if (this.cards.length > 0)  { this.playArea.play(this.cards.pop()) }
+    if (this.cards.length == 0) { this.el.style.background = "rgba(0,0,0,.3)" }
+    this.el.innerHTML = this.cards.length
   }
 
   add(card) {
     this.cards.push(card)
+    this.el.style.background = "";
     this.el.innerHTML = this.cards.length
   }
 
