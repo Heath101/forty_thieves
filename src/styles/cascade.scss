@@ -9,3 +9,13 @@
   float: left;
   margin-right: 20px;
 }
+
+.cascade:before {
+  content: '';
+  position: relative;
+  height: 186px;
+  width: 128px;
+  background-color: rgba(0,0,0,.1);
+  border-radius: 5px;
+  display: inline-block;
+}
