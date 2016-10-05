@@ -14,6 +14,7 @@ export default class CardMover {
     document.addEventListener('card:pickup', this.cardPickup.bind(this))
     document.addEventListener('card:drop', this.cardDrop.bind(this))
     document.addEventListener('mousemove', this.mouseMove.bind(this))
+    document.addEventListener('mouseup', this.invalidCardDrop.bind(this))
   }
 
   cardPickup (e) {
@@ -53,21 +54,31 @@ export default class CardMover {
           this.origin.deactivate()
           this.origin.resetCard()
         }
-        this.movingCard = false
-        this.card.el.style.pointerEvents = ""
-        this.card = null
-        this.origin = null
+        this.reset()
       }
     }
+  }
+
+  reset() {
+    this.movingCard = false
+    this.card.el.style.pointerEvents = ""
+    this.card = null
+    this.origin = null
   }
 
   mouseMove (e) {
     this.mousePosX = window.event.clientX
     this.mousePosY = window.event.clientY
     if (this.movingCard) {
+      console.log('mouse move');
       this.card.el.style.left = `${this.mousePosX - this.mouseOffsetX}px`;
       this.card.el.style.top  = `${this.mousePosY - this.mouseOffsetY}px`;
     }
   }
 
+  invalidCardDrop(e) {
+    this.origin.deactivate()
+    this.origin.resetCard()
+    this.reset()
+  }
 }
