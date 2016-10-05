@@ -12,8 +12,10 @@ export default class CardPile {
   }
 
   mousedown(e) {
-    let ev = new CustomEvent('card:pickup', {'detail': {'origin': this, 'card': this.lastCard()}})
-    document.dispatchEvent(ev)
+    if (this.isAboveLastCard(e.clientX, e.clientY)) {
+      let ev = new CustomEvent('card:pickup', {'detail': {'origin': this, 'card': this.lastCard()}})
+      document.dispatchEvent(ev)
+    }
   }
 
   mouseup(e) {
@@ -58,6 +60,11 @@ export default class CardPile {
 
   moveUndo(e) {
     this.deactivate()
+  }
+
+  isAboveLastCard(x, y) {
+    let bounds = this.lastCard().el.getBoundingClientRect()
+    return y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right
   }
 
   static move(origin, target) {
