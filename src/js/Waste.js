@@ -22,7 +22,7 @@ export default class Waste extends CardPile {
   willAccept(card) { return false }
 
   resetCard() {
-    let card = this.lastCard()
+    let card = this.lastCard
     let level = this.cards.length - 1
     let horizontalOffset =  24 * level
     card.el.style.zIndex = level + 10
