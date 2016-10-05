@@ -1,10 +1,24 @@
-import DropZone from './DropZone.js'
-
-export default class CardPile extends DropZone {
+export default class CardPile {
   constructor(el) {
-    super(el)
+    this.el = el
     this.cards = []
+    this.attach()
+  }
+
+  attach() {
+    this.el.addEventListener('mousedown', this.mousedown.bind(this))
+    this.el.addEventListener('mouseup', this.mouseup.bind(this))
     document.addEventListener('move:undo', this.moveUndo.bind(this))
+  }
+
+  mousedown(e) {
+    let ev = new CustomEvent('card:pickup', {'detail': {'origin': this, 'card': this.lastCard()}})
+    document.dispatchEvent(ev)
+  }
+
+  mouseup(e) {
+    let ev = new CustomEvent('card:drop', {'detail': {'target': this}})
+    document.dispatchEvent(ev)
   }
 
   lastCard() {
@@ -12,11 +26,15 @@ export default class CardPile extends DropZone {
   }
 
   willAccept(card) {
-    super.willAccept(card)
+    throw 'Must implement the function `willAccept(1)`'
   }
 
   add(card) {
-    throw 'Must implement add(1)'
+    throw 'Must implement the function add(1)'
+  }
+
+  resetCard() {
+    throw 'Must implement the function resetCard()'
   }
 
   draw() {
@@ -30,9 +48,7 @@ export default class CardPile extends DropZone {
   }
 
   deactivate() {
-    this.cards.forEach( card => {
-      card.deselect()
-    })
+    this.cards.forEach( card => card.deselect() )
   }
 
   swap(target) {

@@ -1,11 +1,14 @@
 require('../styles/stock.scss')
 
-import CardPile from './CardPile.js'
-
-export default class Stock extends CardPile {
+export default class Stock {
   constructor(el, playArea) {
-    super(el)
+    this.el = el
     this.playArea = playArea
+    this.attach()
+  }
+
+  attach() {
+    this.el.addEventListener('click', this.click.bind(this))
   }
 
   click(e) {

@@ -25,4 +25,13 @@ export default class Cascade extends CardPile {
     card.el.style.left = '0px'
     card.el.style.top = vertOffset + 'px'
   }
+
+  resetCard() {
+    let level = this.cards.length - 1
+    let vertOffset =  44 * level
+    let card = this.lastCard()
+    card.el.style.zIndex = level + 10
+    card.el.style.left = '0px'
+    card.el.style.top = vertOffset + 'px'
+  }
 }

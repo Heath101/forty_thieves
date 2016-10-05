@@ -30,13 +30,24 @@ export default class Foundation extends CardPile {
     card.el.style.top = '0px'
   }
 
+  // this overrides the fn in CardPile.  Needs custom logic about reseting state
   draw() {
     let card = this.cards.pop()
     this.el.removeChild(card.el)
     if (this.cards.length == 0) {
       this.suit = null
       this.currentRank = 0
+    } else {
+      this.currentRank = card.rank - 1
     }
     return card
+  }
+
+  resetCard() {
+    let card = this.lastCard()
+    this.currentRank = this.currentRank - 1
+    card.el.style.zIndex = this.cards.length + 20
+    card.el.style.left = '0px'
+    card.el.style.top = '0px'
   }
 }

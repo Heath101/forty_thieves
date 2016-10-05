@@ -1,15 +1,15 @@
 import Deck            from './Deck.js'
-import MovementHandler from './MovementHandler.js'
 import PlayArea        from './PlayArea.js'
 import Foundation      from './Foundation.js'
 import Cascade         from './Cascade.js'
 import MoveList        from './MoveList.js'
+import CardMover       from './CardMover.js'
 
 export default class FortyThieves {
 
   init(el) {
     this.el = el
-    let movementHandler = new MovementHandler(el)
+    let cardMover = new CardMover()
     let cards = Deck.generate().concat(Deck.generate())
     Deck.shuffle(cards)
     let foundations = this.createFoundations()
@@ -17,8 +17,6 @@ export default class FortyThieves {
     let cascades = this.createCascades()
     this.populateCascades(cards, cascades)
     playArea.addStock(cards)
-    movementHandler.addDropZones(foundations)
-    movementHandler.addDropZones(cascades)
   }
 
   createPlayArea() {
