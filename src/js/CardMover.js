@@ -76,8 +76,10 @@ export default class CardMover {
   }
 
   invalidCardDrop(e) {
-    this.origin.deactivate()
-    this.origin.resetCard()
-    this.reset()
+    if (this.origin && this.card) { // clicking outside tableau triggers the document handler :(
+      this.origin.deactivate()
+      this.origin.resetCard()
+      this.reset()
+    }
   }
 }
