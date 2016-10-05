@@ -70,7 +70,6 @@ export default class CardMover {
     this.mousePosX = window.event.clientX
     this.mousePosY = window.event.clientY
     if (this.movingCard) {
-      console.log('mouse move');
       this.card.el.style.left = `${this.mousePosX - this.mouseOffsetX}px`;
       this.card.el.style.top  = `${this.mousePosY - this.mouseOffsetY}px`;
     }

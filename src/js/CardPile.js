@@ -17,6 +17,7 @@ export default class CardPile {
   }
 
   mouseup(e) {
+    e.stopPropagation()
     let ev = new CustomEvent('card:drop', {'detail': {'target': this}})
     document.dispatchEvent(ev)
   }
