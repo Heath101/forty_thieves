@@ -12,7 +12,7 @@ export default class CardPile {
   }
 
   mousedown(e) {
-    if (this.isAboveLastCard(e.clientX, e.clientY)) {
+    if (this.lastCard != null && this.isAboveLastCard(e.clientX, e.clientY)) {
       let ev = new CustomEvent('card:pickup', {'detail': {'origin': this, 'card': this.lastCard}})
       document.dispatchEvent(ev)
     }
