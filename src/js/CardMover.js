@@ -47,6 +47,7 @@ export default class CardMover {
 
     if (this.origin) {
       if (target == this.origin) {
+        this.origin.resetCard()
         this.origin.activate()
         this.movingCard = false
       } else {
