@@ -29,6 +29,13 @@ export default class PlayArea {
     })
   }
 
+  reset() {
+    this.stock.cards = this.waste.cards
+    this.waste.cards = []
+    this.waste.el.innerHTML = ''
+    this.stock.el.style.background = "";
+  }
+
   moveStockToWaste(card) {
     this.waste.add(card)
   }

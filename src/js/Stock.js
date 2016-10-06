@@ -12,8 +12,11 @@ export default class Stock {
   }
 
   click(e) {
-    if (this.cards.length > 0)  { this.playArea.play(this.cards.pop()) }
-    if (this.cards.length == 0) { this.el.style.background = "rgba(0,0,0,.3)" }
+    if (this.cards.length == 0) { // no more cards in deck
+      this.playArea.reset()
+    } else {
+      this.playArea.play(this.cards.pop())
+    }
     this.el.innerHTML = this.cards.length
   }
 
