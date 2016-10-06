@@ -1,0 +1,12 @@
+<svg width="88" height="92" xmlns="http://www.w3.org/2000/svg" class="heart">
+
+ <metadata id="metadata7">image/svg+xml</metadata>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="94" width="90" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path fill="rgba(0,0,0,.3)" fill-rule="evenodd" stroke="#ff0000" stroke-width="0px" id="path3513" d="m44,19c0,-6 -10,-18 -20,-18c-10,0 -20,8 -20,22c0,22 32,58 40,68c8,-10 40,-46 40,-68c0,-14 -10,-22 -20,-22c-10.04988,0 -20,12 -20,18z"/>
+ </g>
+</svg>

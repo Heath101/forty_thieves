@@ -3,12 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>Forty Thieves</title>
+    <link href="https://fonts.googleapis.com/css?family=Slackey" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Baloo+Thambi|Bangers|Bungee|Changa|Lobster|Lobster+Two|Luckiest+Guy|Righteous|Ruslan+Display|Russo+One|Shrikhand" rel="stylesheet"> -->
+    <style media="screen">
+
+    </style>
   </head>
   <body>
-    <h1>Forty Thieves</h1>
-    <button type="button" id="start" name="button">Start the game</button>
-    <button type="button" id="undo" name="button">Undo</button>
-    <div class="tableau" id="game"></div>
+
+    <section class="start-screen" id="startScreen">
+      <object type="image/svg+xml" data="club.svg" class="club-svg">
+        <param name="wmode" value="transparent" />
+      </object>
+      <object type="image/svg+xml" data="heart.svg" class="heart-svg"></object>
+      <div class="contain">
+        <div class="title">Forty Thieves</div>
+        <div class="menu">
+          <a href="#" class="button fade-in" id="start">
+            Start
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+    <div class="tableau" id="game">
+      <button href="#" class="" id="undo" name="button">Undo</button>
+    </div>
     <script type="text/javascript" src="app.min.js"></script>
   </body>
 </html>

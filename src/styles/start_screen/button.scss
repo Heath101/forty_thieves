@@ -1,0 +1,63 @@
+$buttonColor: white;
+$buttonTextColor: #bbb;
+
+.button {
+  text-decoration: none;
+  width: 200px;
+  height: 150px;
+  background-color: $buttonColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  font-size: 2rem;
+  color: $buttonTextColor;
+  box-shadow: 0 1px 0 darken($buttonColor, 20%),
+              0 2px 0 darken($buttonColor, 22%),
+              0 3px 0 darken($buttonColor, 24%),
+              0 4px 0 darken($buttonColor, 26%),
+              0 5px 0 darken($buttonColor, 28%),
+              0 6px 0 darken($buttonColor, 30%),
+              0 7px 0 darken($buttonColor, 32%),
+              0 6px 1px rgba(0,0,0,.1),
+              0 0 5px rgba(0,0,0,.1),
+              0 1px 3px rgba(0,0,0,.3),
+              0 3px 5px rgba(0,0,0,.2),
+              0 5px 10px rgba(0,0,0,.25),
+              0 10px 10px rgba(0,0,0,.2),
+              0 20px 20px rgba(0,0,0,.15);
+
+  &:hover {
+    color: mix($buttonTextColor, #0d8cc6, 50%);
+  }
+
+  &:active {
+    position: relative;
+    top: 7px;
+    transform: translate(10px 10px);
+    box-shadow: 0 1px 0 darken($buttonColor, 28%),
+                0 2px 0 darken($buttonColor, 30%),
+                0 3px 0 darken($buttonColor, 32%),
+                0 6px 1px rgba(0,0,0,.1),
+                0 0 5px rgba(0,0,0,.1),
+                0 1px 3px rgba(0,0,0,.3),
+                0 3px 5px rgba(0,0,0,.2),
+                0 5px 10px rgba(0,0,0,.25),
+                0 10px 10px rgba(0,0,0,.2),
+                0 20px 20px rgba(0,0,0,.15);
+  }
+
+
+  &.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s;
+    animation-delay: 2.5s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0 }
+
+  100% { opacity: 1 }
+}
