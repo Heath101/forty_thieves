@@ -3,10 +3,18 @@ import Card from './Card.js'
 export default class Deck {
   constructor() { }
 
-  static generate() {
+  static generate(decks = 1) {
     let cards = []
-    let suits = ['spades','diamonds','hearts','clubs']
-    let values = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king']
+    for(let i = 1; i <= decks; i++) {
+      cards = cards.concat(Deck.create())
+    }
+    return cards
+  }
+
+  static create() {
+    let cards = []
+    const suits = ['spades','diamonds','hearts','clubs']
+    const values = ['ace','2','3','4','5','6','7','8','9','10','jack','queen','king']
 
     while (suits.length != 0) {
       let suit = suits.pop()

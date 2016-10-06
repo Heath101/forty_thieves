@@ -10,7 +10,7 @@ export default class FortyThieves {
   init(el) {
     this.el = el
     let cardMover = new CardMover()
-    let cards = Deck.generate().concat(Deck.generate())
+    let cards = Deck.generate(2)
     Deck.shuffle(cards)
     let foundations = this.createFoundations()
     let playArea = this.createPlayArea()
