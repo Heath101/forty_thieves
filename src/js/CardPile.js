@@ -42,6 +42,7 @@ export default class CardPile {
 
   draw() {
     let card = this.cards.pop()
+    card.deselect()
     this.el.removeChild(card.el)
     return card
   }
@@ -63,7 +64,8 @@ export default class CardPile {
   }
 
   isAboveLastCard(x, y) {
-    let bounds = this.lastCard.el.getBoundingClientRect()
+    let area = (this.cards.length != 0) ? this.lastCard.el : this.el
+    let bounds = area.getBoundingClientRect()
     return y >= bounds.top && y <= bounds.bottom && x >= bounds.left && x <= bounds.right
   }
 

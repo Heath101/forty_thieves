@@ -1,9 +1,10 @@
-import Deck            from './Deck.js'
-import PlayArea        from './PlayArea.js'
-import Foundation      from './Foundation.js'
-import Cascade         from './Cascade.js'
-import MoveList        from './MoveList.js'
-import CardMover       from './CardMover.js'
+import Deck        from './Deck.js'
+import PlayArea    from './PlayArea.js'
+import Foundation  from './Foundation.js'
+import Cascade     from './Cascade.js'
+import MoveList    from './MoveList.js'
+import CardMover   from './CardMover.js'
+import CardPile    from "./CardPile";
 
 export default class FortyThieves {
 
@@ -12,11 +13,25 @@ export default class FortyThieves {
     let cardMover = new CardMover()
     let cards = Deck.generate(2)
     Deck.shuffle(cards)
-    let foundations = this.createFoundations()
+    this.foundations = this.createFoundations()
     let playArea = this.createPlayArea()
-    let cascades = this.createCascades()
-    this.populateCascades(cards, cascades)
+    this.cascades = this.createCascades()
+    this.populateCascades(cards, this.cascades)
     playArea.addStock(cards)
+    this.attach()
+  }
+
+  attach() {
+    document.addEventListener('card:auto', this.auto.bind(this))
+  }
+
+  auto(e) {
+    const card = e.detail.card
+    const cardPiles = this.foundations.concat(this.cascades)
+    const match = cardPiles.find( cardPile => {
+      if (cardPile.willAccept(card)) { return cardPile}
+    })
+    if (match) { CardPile.move(e.detail.origin, match) }
   }
 
   createPlayArea() {

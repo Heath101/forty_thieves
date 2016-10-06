@@ -20,6 +20,9 @@ export default class CardMover {
   cardPickup (e) {
     if (this.card) { // there is already a card activated
       if (this.card == e.detail.card) { // the card has been clicked twice, deactivate
+        // debugger
+        let ev = new CustomEvent('card:auto', {'detail': {'card': this.card, 'origin': this.origin}})
+        document.dispatchEvent(ev)
         this.origin.deactivate()
         this.card = null
         this.origin = null
