@@ -1,9 +1,9 @@
 $colorTitle: #efefef;
 
 .title {
-  height: 400px;
   text-align: center;
   font-size: 10em;
+  margin-bottom: 1em;
   color: $colorTitle;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: darken($colorTitle, 26%);
