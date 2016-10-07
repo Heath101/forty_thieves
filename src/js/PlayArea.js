@@ -30,7 +30,7 @@ export default class PlayArea {
   }
 
   reset() {
-    this.stock.cards = this.waste.cards
+    this.stock.cards = this.waste.cards.reverse()
     this.waste.cards = []
     this.waste.el.innerHTML = ''
     this.stock.el.style.background = "";
