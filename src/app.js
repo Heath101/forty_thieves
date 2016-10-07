@@ -1,5 +1,8 @@
-require('./styles/layout.scss')
-require('./styles/start-screen.scss')
+require('./styles/base/layout.scss')
+require('./styles/base/animations.scss')
+require('./styles/base/utilities.scss')
+require('./styles/StartScreen.scss')
+require('./styles/Game.scss')
 
 import FortyThieves from './js/FortyThieves.js'
 import MoveList from './js/MoveList.js'
@@ -11,7 +14,7 @@ start.addEventListener('click', startGame)
 
 function startGame(e) {
   let game = new FortyThieves()
-  game.init(document.getElementById('game'))
+  game.init(document.getElementById('gameBoard'))
   let screen = document.querySelector('#startScreen')
   screen.classList.add('hidden')
   screen.style.zIndex = 0

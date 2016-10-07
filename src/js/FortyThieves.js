@@ -36,7 +36,7 @@ export default class FortyThieves {
 
   createPlayArea() {
     let playAreaEl = document.createElement('div')
-    playAreaEl.className = 'play-area'
+    playAreaEl.className = 'PlayArea'
     this.el.appendChild(playAreaEl)
     return new PlayArea(playAreaEl, window.moveList)
   }
@@ -47,7 +47,7 @@ export default class FortyThieves {
     foundationsEl.className = 'foundations'
     for(let i = 1; i <= 8; i++) {
       let foundation = document.createElement('div')
-      foundation.className = 'foundation'
+      foundation.className = 'Foundation'
       foundationsEl.appendChild(foundation)
       foundations.push(new Foundation(foundation) )
     }
@@ -62,7 +62,7 @@ export default class FortyThieves {
 
     for(let i = 1; i <= 10; i++) {
       let cascade = document.createElement('div')
-      cascade.className = 'cascade'
+      cascade.className = 'Cascade'
       cascadesEl.appendChild(cascade)
       cascades.push(new Cascade(cascade) )
     }

@@ -4,33 +4,25 @@
     <meta charset="utf-8">
     <title>Forty Thieves</title>
     <link href="https://fonts.googleapis.com/css?family=Slackey" rel="stylesheet">
-<!-- <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Baloo+Thambi|Bangers|Bungee|Changa|Lobster|Lobster+Two|Luckiest+Guy|Righteous|Ruslan+Display|Russo+One|Shrikhand" rel="stylesheet"> -->
-    <style media="screen">
-
-    </style>
   </head>
   <body>
-
-    <section class="start-screen" id="startScreen">
-      <object type="image/svg+xml" data="club.svg" class="club-svg">
-        <param name="wmode" value="transparent" />
-      </object>
+    <section class="StartScreen" id="startScreen">
+      <object type="image/svg+xml" data="club.svg" class="club-svg"> </object>
       <object type="image/svg+xml" data="heart.svg" class="heart-svg"></object>
-      <div class="contain">
-        <div class="title">Forty Thieves</div>
-        <div class="menu">
-          <a href="#" class="button fade-in" id="newGame">
-            New Game
-          </a>
+      <div class="StartScreen_container">
+        <div class="StartScreen_title">Forty Thieves</div>
+        <div class="StartScreen_menu">
+          <a href="#" class="Button fade-in" id="newGame">New Game</a>
         </div>
-
       </div>
-
     </section>
-    <div class="tableau" id="game">
-      <div>Forty Thieves</div>
-      <button href="#" class="" id="undo" name="button">Undo</button>
-    </div>
+    <section class="Game">
+      <div class="Game_menu">
+        <h3>Forty Thieves</h3>
+        <button href="#" class="" id="undo" name="button">Undo</button>
+      </div>
+      <div class="Game_board" id="gameBoard"></div>
+    </section>
     <script type="text/javascript" src="app.min.js"></script>
   </body>
 </html>

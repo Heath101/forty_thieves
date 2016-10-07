@@ -21,7 +21,7 @@ export default class Deck {
       let rank = 1
       values.forEach((value) => {
         let card = document.createElement('div')
-        card.className = `card ${suit}-${value}`
+        card.className = `Card ${suit}-${value}`
 
         cards.push(new Card(card, suit, value, rank))
         rank += 1

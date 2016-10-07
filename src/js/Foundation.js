@@ -1,4 +1,4 @@
-require('../styles/foundation.scss')
+require('../styles/Foundation.scss')
 
 import CardPile from './CardPile.js'
 

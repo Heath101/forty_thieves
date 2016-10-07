@@ -1,4 +1,4 @@
-require('../styles/card.scss')
+require('../styles/Card.scss')
 
 export default class Card {
   constructor(el, suit, value, rank) {
@@ -14,11 +14,5 @@ export default class Card {
 
   deselect() {
     this.el.classList.remove('selected')
-  }
-
-  static createCard() {
-    let card = document.createElement('div')
-    card.className = 'card'
-    return card
   }
 }

@@ -1,4 +1,4 @@
-require('../styles/play-area.scss')
+require('../styles/PlayArea.scss')
 
 import Stock from './Stock.js'
 import Waste from './Waste.js'

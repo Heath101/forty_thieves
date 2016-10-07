@@ -5,17 +5,17 @@
   cursor: pointer;
 }
 
-.cascade {
+.Cascade {
   position: relative;
   height: 100%;
   width: 128px;
-}
 
-.cascade:before {
-  content: '';
-  height: 186px;
-  width: 128px;
-  background-color: rgba(0,0,0,.1);
-  border-radius: 5px;
-  display: block;
+  &:before {
+    content: '';
+    height: 186px;
+    width: 128px;
+    background-color: rgba(0,0,0,.1);
+    border-radius: 5px;
+    display: block;
+  }
 }

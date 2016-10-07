@@ -1,4 +1,4 @@
-require('../styles/waste.scss')
+require('../styles/Waste.scss')
 
 import CardPile from './CardPile.js'
 
@@ -28,7 +28,7 @@ export default class Waste extends CardPile {
       let horizontalOffset =  24 * level
       card.el.style.zIndex = level + 10
       card.el.style.left = horizontalOffset + 'px'
-      card.el.style.top = '0px'       
+      card.el.style.top = '0px'
     }
   }
 }

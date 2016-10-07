@@ -1,4 +1,4 @@
-require('../styles/cascade.scss')
+require('../styles/Cascade.scss')
 
 import CardPile from './CardPile.js'
 
@@ -33,7 +33,7 @@ export default class Cascade extends CardPile {
     if (card) {
       card.el.style.zIndex = level + 10
       card.el.style.left = '0px'
-      card.el.style.top = vertOffset + 'px'       
+      card.el.style.top = vertOffset + 'px'
     }
   }
 }

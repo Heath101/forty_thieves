@@ -1,4 +1,4 @@
-require('../styles/stock.scss')
+require('../styles/Stock.scss')
 
 export default class Stock {
   constructor(el, playArea) {
