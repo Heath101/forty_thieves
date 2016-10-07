@@ -1,3 +1,5 @@
+@import '/base/variables.scss';
+
 .Card {
   background-color: #eee;
   display: inline-block;
@@ -21,7 +23,7 @@
       left: 0 ;
       right: 0 ;
       border-radius: 5px ;
-      border: 2px solid #FFAD00;
+      border: 2px solid $color-highlight;
     }
   }
 }

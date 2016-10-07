@@ -1,3 +1,5 @@
+@import 'base/variables.scss';
+
 .foundations {
   display: flex;
   flex-wrap: nowrap;
@@ -12,7 +14,7 @@
   position: relative;
   height: 186px;
   width: 128px;
-  border: 2px solid rgba(0,0,0,.2);
-  background-color: rgba(0,0,0,.1);
+  border: 2px solid $color-background-darker;
+  background-color: $color-background-dark;
   border-radius: 5px;
 }

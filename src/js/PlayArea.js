@@ -7,8 +7,8 @@ export default class PlayArea {
   constructor(el, moveList) {
     this.el = el
     this.moveList = moveList
-    this.stock = this.create(Stock, 'stock')
-    this.waste = this.create(Waste, 'waste')
+    this.stock = this.create(Stock, 'Stock')
+    this.waste = this.create(Waste, 'Waste')
   }
 
   addStock(cards) {

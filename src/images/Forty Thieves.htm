@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://localhost:8080/forty-thieves.html# -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Forty Thieves</title>
+    <link href="./Forty Thieves_files/css" rel="stylesheet">
+  <style type="text/css">.Card {
+  background-color: #eee;
+  display: inline-block;
+  float: left;
+  position: absolute;
+  height: 186px;
+  width: 128px;
+  z-index: 10;
+  cursor: pointer; }
+  .Card.selected {
+    border-radius: 5px;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3); }
+    .Card.selected:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 5px;
+      border: 2px solid #FFAD00; }
+
+.hearts-ace {
+  background: url(41453bfa387b05e68828f2b0159c19d9.png);
+  background-size: 128px 186px; }
+
+.hearts-2 {
+  background: url(f97ad85b1e89af6a88c70205cdea06f6.png);
+  background-size: 128px 186px; }
+
+.hearts-3 {
+  background: url(1c16fe1052c3a4d1715ee1288209ebe9.png);
+  background-size: 128px 186px; }
+
+.hearts-4 {
+  background: url(5ad913da63724447b7c94d1fb2d293a6.png);
+  background-size: 128px 186px; }
+
+.hearts-5 {
+  background: url(8f6a2068fd6f32c372ea8dab0cde6f40.png);
+  background-size: 128px 186px; }
+
+.hearts-6 {
+  background: url(9cd2258c8c8c175ead46f94800741891.png);
+  background-size: 128px 186px; }
+
+.hearts-7 {
+  background: url(a9afa10fcea89a4227bb4b81f49a35e8.png);
+  background-size: 128px 186px; }
+
+.hearts-8 {
+  background: url(e6c01b136dca0b2c3c03a115d4ab21e1.png);
+  background-size: 128px 186px; }
+
+.hearts-9 {
+  background: url(cdb8fda5b30f3973b1ec7f200c24a18f.png);
+  background-size: 128px 186px; }
+
+.hearts-10 {
+  background: url(2e6327a66fbf8d05d379d87d56251a1e.png);
+  background-size: 128px 186px; }
+
+.hearts-jack {
+  background: url(9be659a7f009932fe8f49a213c22e439.png);
+  background-size: 128px 186px; }
+
+.hearts-queen {
+  background: url(8065dc2a89d1be1e9908343fb99d82cc.png);
+  background-size: 128px 186px; }
+
+.hearts-king {
+  background: url(e8d050e1412d4866d34f9a41b0c48238.png);
+  background-size: 128px 186px; }
+
+.spades-ace {
+  background: url(ce4f163fc9fddc4e9f173d74b2970cc2.png);
+  background-size: 128px 186px; }
+
+.spades-2 {
+  background: url(2354275da56e304199f694388a8aaae6.png);
+  background-size: 128px 186px; }
+
+.spades-3 {
+  background: url(ad02dc95b434842c3465a7a4dbaca615.png);
+  background-size: 128px 186px; }
+
+.spades-4 {
+  background: url(df185c634b2fee0418bd613524938832.png);
+  background-size: 128px 186px; }
+
+.spades-5 {
+  background: url(aa8a072015826f2e582a59e9606e0cd3.png);
+  background-size: 128px 186px; }
+
+.spades-6 {
+  background: url(5d221b2a958bb6b66b4e57de437c0906.png);
+  background-size: 128px 186px; }
+
+.spades-7 {
+  background: url(c0f5e5f9013f1d24eccd395ab9312766.png);
+  background-size: 128px 186px; }
+
+.spades-8 {
+  background: url(747667555c7c5d6799ca3545463372b0.png);
+  background-size: 128px 186px; }
+
+.spades-9 {
+  background: url(e5b29fdec7e761281073496181d31ab9.png);
+  background-size: 128px 186px; }
+
+.spades-10 {
+  background: url(2401fe3648865f6bc3c01a538c512d7c.png);
+  background-size: 128px 186px; }
+
+.spades-jack {
+  background: url(d77ce402c3977e303abeed8ec5bb35a5.png);
+  background-size: 128px 186px; }
+
+.spades-queen {
+  background: url(445df3cf193554d44a50f43d4597c324.png);
+  background-size: 128px 186px; }
+
+.spades-king {
+  background: url(aebc913c5eb0ecd7859218636929c8ae.png);
+  background-size: 128px 186px; }
+
+.clubs-ace {
+  background: url(07d1c180bead76a0b8cf8e488dfc2755.png);
+  background-size: 128px 186px; }
+
+.clubs-2 {
+  background: url(c83a7af4125e22d9733f6514295f3d4c.png);
+  background-size: 128px 186px; }
+
+.clubs-3 {
+  background: url(23a7a6ac76db02bbde27988e49ac5fca.png);
+  background-size: 128px 186px; }
+
+.clubs-4 {
+  background: url(02deab4916f717f0b9478fad476ec40f.png);
+  background-size: 128px 186px; }
+
+.clubs-5 {
+  background: url(3781bf44a82cad8ef837e6ba281427c9.png);
+  background-size: 128px 186px; }
+
+.clubs-6 {
+  background: url(9c2fdf6a8916a2b3daea26a7974eed28.png);
+  background-size: 128px 186px; }
+
+.clubs-7 {
+  background: url(112be1dfa65edf2cabf9122b2c49eb22.png);
+  background-size: 128px 186px; }
+
+.clubs-8 {
+  background: url(6ed0b85e676230d360186c3469b08cdf.png);
+  background-size: 128px 186px; }
+
+.clubs-9 {
+  background: url(784ea7703fcff1e10745e014d98a24aa.png);
+  background-size: 128px 186px; }
+
+.clubs-10 {
+  background: url(c29b28f3eceb7284d141163e3bd37736.png);
+  background-size: 128px 186px; }
+
+.clubs-jack {
+  background: url(d96ecf4f3c246b8c781f82d1bb2bd1dc.png);
+  background-size: 128px 186px; }
+
+.clubs-queen {
+  background: url(fd943099b2abeb6cf01bebb4dc66cbbe.png);
+  background-size: 128px 186px; }
+
+.clubs-king {
+  background: url(f0dc748d3d36f265ab670c8ce0332e3d.png);
+  background-size: 128px 186px; }
+
+.diamonds-ace {
+  background: url(60b16fdaed475d30edab3bc92f4bd3c9.png);
+  background-size: 128px 186px; }
+
+.diamonds-2 {
+  background: url(0b5b5249b22ada06106be8b73938be9e.png);
+  background-size: 128px 186px; }
+
+.diamonds-3 {
+  background: url(b529e1c14fef2ffc07c3c4eac94c31f4.png);
+  background-size: 128px 186px; }
+
+.diamonds-4 {
+  background: url(58bd0a6383829cbce3747c245c0b204c.png);
+  background-size: 128px 186px; }
+
+.diamonds-5 {
+  background: url(e27b4b0aadc6a28953f53cfd573e9e2d.png);
+  background-size: 128px 186px; }
+
+.diamonds-6 {
+  background: url(ee5053d458469b151ef1f4503b5ab12f.png);
+  background-size: 128px 186px; }
+
+.diamonds-7 {
+  background: url(df3e8e93d277f2b73d2c5ddf348c065c.png);
+  background-size: 128px 186px; }
+
+.diamonds-8 {
+  background: url(8afee604213ca296067245ce18458af2.png);
+  background-size: 128px 186px; }
+
+.diamonds-9 {
+  background: url(86608eb9bf92b21b9e33a1ffa4c46ccc.png);
+  background-size: 128px 186px; }
+
+.diamonds-10 {
+  background: url(4324d71291ce16ef4161df8cf852298e.png);
+  background-size: 128px 186px; }
+
+.diamonds-jack {
+  background: url(c936f66eb6ca786d62a2c49876367017.png);
+  background-size: 128px 186px; }
+
+.diamonds-queen {
+  background: url(f91b8d276604290828523a097fd4af26.png);
+  background-size: 128px 186px; }
+
+.diamonds-king {
+  background: url(9588f72f2c9d6898c9af3b20bcde7c2f.png);
+  background-size: 128px 186px; }
+</style><style type="text/css">.Stock {
+  position: relative;
+  height: 186px;
+  width: 128px;
+  background: url(09a58d561b2a7b92bd506c83414ef1ab.png);
+  background-size: 128px 186px;
+  margin-right: 20px;
+  display: flex;
+  float: left;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 58px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+</style><style type="text/css">.Waste {
+  position: relative;
+  display: inline-block;
+  height: 186px;
+  min-width: 128px;
+  cursor: pointer; }
+</style><style type="text/css">.PlayArea {
+  display: inline-block;
+  margin-bottom: 20px; }
+</style><style type="text/css">.foundations {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 186px;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+  cursor: pointer; }
+
+.Foundation {
+  position: relative;
+  height: 186px;
+  width: 128px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px; }
+</style><style type="text/css">.cascades {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer; }
+
+.Cascade {
+  position: relative;
+  height: 100%;
+  width: 128px; }
+  .Cascade:before {
+    content: '';
+    height: 186px;
+    width: 128px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: block; }
+</style><style type="text/css">* {
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none; }
+
+body {
+  background-color: #407d42;
+  position: relative;
+  margin: 0;
+  font-family: 'Slackey', cursive; }
+</style><style type="text/css">@keyframes fadein {
+  0% {
+    transform: translateY(200px);
+    opacity: 0; }
+  25% {
+    opacity: 1; }
+  50% {
+    transform: translateY(200px); }
+  100% {
+    transform: translateY(0px); } }
+</style><style type="text/css">.hidden {
+  opacity: 0; }
+</style><style type="text/css">.Button {
+  text-decoration: none;
+  width: 300px;
+  height: 150px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  font-size: 2rem;
+  color: #bbb;
+  border-radius: 5px;
+  box-shadow: 0 1px 0 #cccccc, 0 2px 0 #c7c7c7, 0 3px 0 #c2c2c2, 0 4px 0 #bdbdbd, 0 5px 0 #b8b8b8, 0 6px 0 #b3b3b3, 0 7px 0 #adadad, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15); }
+  .Button:hover {
+    color: #64a4c1; }
+  .Button:active {
+    position: relative;
+    top: 7px;
+    transform: translate(10px 10px);
+    box-shadow: 0 1px 0 #b8b8b8, 0 2px 0 #b3b3b3, 0 3px 0 #adadad, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15); }
+  .Button.fade-in {
+    opacity: 0;
+    animation: button-fade-in 1s;
+    animation-delay: 2.5s;
+    animation-fill-mode: forwards; }
+
+@keyframes button-fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.StartScreen {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #5ba4c6 11%, #1a91c9 32%, #0d8cc6 87%);
+  z-index: 1000;
+  transition: opacity 1s; }
+  .StartScreen_container {
+    width: 1500px;
+    position: relative;
+    display: flex;
+    flex-flow: column; }
+  .StartScreen_title {
+    text-align: center;
+    font-size: 10em;
+    margin-bottom: 1em;
+    color: #efefef;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #adadad;
+    text-shadow: 0 1px 0 #bcbcbc, 0 2px 0 #b7b7b7, 0 3px 0 #b2b2b2, 0 4px 0 #adadad, 0 5px 0 #a8a8a8, 0 6px 0 #a3a3a3, 0 7px 0 #9d9d9d, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+    animation: fadein 3s; }
+  .StartScreen_menu {
+    display: flex;
+    justify-content: center; }
+  .StartScreen .club-svg {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: scale(8) translate(0px, 30px) rotateZ(-30deg);
+    pointer-events: none; }
+  .StartScreen .heart-svg {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: scale(8) translate(-30px, 30px) rotateZ(30deg);
+    pointer-events: none; }
+</style><style type="text/css">.Game_menu {
+  border: 1px solid red;
+  font-family: 'Slackey', cursive;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  cursor: pointer; }
+  .Game_menu h3 {
+    margin: 0 1rem 0 0;
+    border: 1px solid blue;
+    font-size: 4rem; }
+  .Game_menu .buttons a {
+    color: #2f5b30;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    margin-left: 1rem;
+    border: 1px solid yellow; }
+    .Game_menu .buttons a:hover {
+      color: yellow; }
+
+.Game_board {
+  position: relative;
+  width: 1500px;
+  height: 1200px;
+  padding: 10px;
+  margin: auto; }
+</style></head>
+  <body>
+    <section class="StartScreen hidden" id="startScreen" style="z-index: 0;">
+      <object type="image/svg+xml" data="./Forty Thieves_files/club.svg" class="club-svg"> </object>
+      <object type="image/svg+xml" data="./Forty Thieves_files/heart.svg" class="heart-svg"></object>
+      <div class="StartScreen_container">
+        <div class="StartScreen_title">Forty Thieves</div>
+        <div class="StartScreen_menu">
+          <a href="http://localhost:8080/forty-thieves.html#" class="Button fade-in" id="newGame">New Game</a>
+        </div>
+      </div>
+    </section>
+    <section class="Game">
+      <div class="Game_menu">
+        <h3>Forty Thieves</h3>
+        <div class="buttons">
+          <a href="http://localhost:8080/forty-thieves.html#" id="newGame">New Game</a>
+          <a href="http://localhost:8080/forty-thieves.html#" id="undo">Undo</a>
+        </div>
+      </div>
+      <div class="Game_board" id="gameBoard"><div class="foundations"><div class="Foundation"></div><div class="Foundation"></div><div class="Foundation"></div><div class="Foundation"></div><div class="Foundation"></div><div class="Foundation"></div><div class="Foundation"></div><div class="Foundation"></div></div><div class="PlayArea"><div class="stock"></div><div class="waste"></div></div><div class="cascades"><div class="Cascade"><div class="Card diamonds-10" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card hearts-5" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card spades-10" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card diamonds-king" style="z-index: 13; left: 0px; top: 132px;"></div></div><div class="Cascade"><div class="Card spades-9" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card clubs-8" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card diamonds-ace" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card clubs-queen" style="z-index: 13; left: 0px; top: 132px;"></div></div><div class="Cascade"><div class="Card clubs-queen" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card clubs-ace" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card clubs-5" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card hearts-3" style="z-index: 13; left: 0px; top: 132px;"></div></div><div class="Cascade"><div class="Card spades-7" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card clubs-6" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card hearts-9" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card spades-king" style="z-index: 13; left: 0px; top: 132px;"></div></div><div class="Cascade"><div class="Card spades-2" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card diamonds-6" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card diamonds-ace" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card diamonds-9" style="z-index: 13; left: 0px; top: 132px;"></div></div><div class="Cascade"><div class="Card hearts-10" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card diamonds-2" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card hearts-4" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card diamonds-king" style="z-index: 13; left: 0px; top: 132px;"></div></div><div class="Cascade"><div class="Card clubs-2" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card diamonds-jack" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card hearts-king" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card hearts-7" style="z-index: 13; left: 0px; top: 132px;"></div></div><div class="Cascade"><div class="Card hearts-5" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card diamonds-4" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card clubs-10" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card clubs-8" style="z-index: 13; left: 0px; top: 132px;"></div></div><div class="Cascade"><div class="Card spades-queen" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card clubs-9" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card clubs-7" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card diamonds-4" style="z-index: 13; left: 0px; top: 132px;"></div></div><div class="Cascade"><div class="Card clubs-5" style="z-index: 10; left: 0px; top: 0px;"></div><div class="Card spades-6" style="z-index: 11; left: 0px; top: 44px;"></div><div class="Card hearts-8" style="z-index: 12; left: 0px; top: 88px;"></div><div class="Card hearts-2" style="z-index: 13; left: 0px; top: 132px;"></div></div></div></div>
+    </section>
+    <script type="text/javascript" src="./Forty Thieves_files/app.min.js"></script>
+  
+
+</body></html>

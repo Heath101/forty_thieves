@@ -1,6 +1,6 @@
 @import 'Button.scss';
-
-$colorTitle: #efefef;
+@import 'base/mixins.scss';
+@import 'base/variables.scss';
 
 // StartScreen block
 .StartScreen {
@@ -26,23 +26,8 @@ $colorTitle: #efefef;
     text-align: center;
     font-size: 10em;
     margin-bottom: 1em;
-    color: $colorTitle;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: darken($colorTitle, 26%);
-    text-shadow: 0 1px 0 darken($colorTitle, 20%),
-                0 2px 0 darken($colorTitle, 22%),
-                0 3px 0 darken($colorTitle, 24%),
-                0 4px 0 darken($colorTitle, 26%),
-                0 5px 0 darken($colorTitle, 28%),
-                0 6px 0 darken($colorTitle, 30%),
-                0 7px 0 darken($colorTitle, 32%),
-                0 6px 1px rgba(0,0,0,.1),
-                0 0 5px rgba(0,0,0,.1),
-                0 1px 3px rgba(0,0,0,.3),
-                0 3px 5px rgba(0,0,0,.2),
-                0 5px 10px rgba(0,0,0,.25),
-                0 10px 10px rgba(0,0,0,.2),
-                0 20px 20px rgba(0,0,0,.15);
+    color: $color-title;
+    @include Text3D($color-title);
     animation: fadein 3s;
   }
 

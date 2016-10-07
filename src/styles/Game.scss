@@ -1,10 +1,37 @@
+@import 'base/variables.scss';
+@import 'base/mixins.scss';
+
 .Game {
 
   // Menu element
   &_menu {
+    font-family: 'Slackey', cursive;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    padding: 0 1em;
+    color: darken($color-background, 10%);
 
     h3 {
-      margin: 0;
+      margin: 0 1rem 0 0;
+      font-size: 4rem;
+      color: $color-title;
+      @include Text3D($color-title);
+    }
+
+    .buttons {
+      cursor: pointer;
+
+      a {
+        color: darken($color-background, 10%);
+        text-decoration: none;
+        padding: .5rem 1rem;
+        margin-left: 1rem;
+
+        &:hover {
+          color: $color-highlight;
+        }
+      }
     }
   }
 
