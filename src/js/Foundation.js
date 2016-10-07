@@ -45,9 +45,11 @@ export default class Foundation extends CardPile {
 
   resetCard() {
     let card = this.lastCard
-    this.currentRank = this.currentRank - 1
-    card.el.style.zIndex = this.cards.length + 20
-    card.el.style.left = '0px'
-    card.el.style.top = '0px'
+    if (card) {
+      this.currentRank = this.currentRank - 1
+      card.el.style.zIndex = this.cards.length + 20
+      card.el.style.left = '0px'
+      card.el.style.top = '0px'
+    }
   }
 }
