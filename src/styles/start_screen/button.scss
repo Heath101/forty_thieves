@@ -12,6 +12,7 @@ $buttonTextColor: #bbb;
   opacity: 1;
   font-size: 2rem;
   color: $buttonTextColor;
+  border-radius: 5px;
   box-shadow: 0 1px 0 darken($buttonColor, 20%),
               0 2px 0 darken($buttonColor, 22%),
               0 3px 0 darken($buttonColor, 24%),
