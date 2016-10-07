@@ -6,9 +6,11 @@
 }
 
 body {
-  background-color: #407d42;
+  background: linear-gradient(135deg, #006e2e 0%, #0a8433 27%, #108236 52%, #0a8433 77%, #006e2e 100%);
   position: relative;
   margin: 0;
   font-family: 'Slackey', cursive;
   cursor: default;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }

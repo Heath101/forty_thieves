@@ -1,6 +1,6 @@
 // colors
-$color-background: #407d42;
-$color-background-dark: darken($color-background, 5%);
-$color-background-darker: darken($color-background, 15%);
+$color-background: rgba(0,0,0,.1);
+$color-background-dark: rgba(0,0,0,.15);
+$color-background-darker: rgba(0,0,0,.25);
 $color-highlight: #FFAD00;
 $color-title: #efefef;
