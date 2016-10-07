@@ -6,7 +6,7 @@ import MoveList from './js/MoveList.js'
 
 window.moveList = new MoveList()
 
-const start = document.getElementById('start')
+const start = document.getElementById('newGame')
 start.addEventListener('click', startGame)
 
 function startGame(e) {
