@@ -10,7 +10,7 @@
 
   &.selected {
     border-radius: 5px;
-    box-shadow: 0 0 20px yellow;
+    box-shadow: 2px 2px 0px rgba(0,0,0,.3);
 
     &:after {
       content: '' ;
@@ -21,7 +21,7 @@
       left: 0 ;
       right: 0 ;
       border-radius: 5px ;
-      border: 2px solid yellow;
+      border: 2px solid #FFAD00;
     }
   }
 }
