@@ -2,6 +2,10 @@
 @import 'base/mixins.scss';
 
 .Game {
+  width: 1500px;
+  height: 1200px;
+  padding: 10px;
+  margin: auto;
 
   // Menu element
   &_menu {
@@ -9,8 +13,6 @@
     font-size: 2em;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 1em;
 
     h3 {
       margin: 0 1rem 0 0;
@@ -38,9 +40,11 @@
   // Board element
   &_board {
     position: relative;
-    width: 1500px;
-    height: 1200px;
-    padding: 10px;
-    margin: auto;
+  }
+
+  // Score element
+  &_score {
+    margin-left: auto;
+    color: white;
   }
 }

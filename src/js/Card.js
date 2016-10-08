@@ -16,6 +16,15 @@ export default class Card {
     this.el.classList.remove('selected')
   }
 
+  beginMoving() {
+    this.el.style.pointerEvents = 'none'
+    this.el.style.zIndex = 1000
+  }
+
+  endMoving() {
+    this.el.style.pointerEvents = ''
+  }
+
   position(pos) {
     let top  = pos['top'],
         left = pos['left'],
