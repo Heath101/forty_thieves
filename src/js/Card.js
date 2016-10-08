@@ -15,4 +15,13 @@ export default class Card {
   deselect() {
     this.el.classList.remove('selected')
   }
+
+  position(pos) {
+    let top  = pos['top'],
+        left = pos['left'],
+        z    = pos['z']
+    if (top != null) { this.el.style.top = `${top}px` }
+    if (left != null) { this.el.style.left = `${left}px` }
+    if (z != null) { this.el.style.zIndex = z }
+  }
 }

@@ -37,7 +37,6 @@ export default class CardMover {
 
       // mark card not to receive pointer events, so that the card pile below the card gets the mouseup
       this.card.el.style.pointerEvents = "none"
-      this.card.el.style.zIndex = 1000
       this.movingCard = true
     }
   };
@@ -74,8 +73,10 @@ export default class CardMover {
     this.mousePosX = window.event.clientX
     this.mousePosY = window.event.clientY
     if (this.movingCard) {
-      this.card.el.style.left = `${this.mousePosX - this.mouseOffsetX}px`;
-      this.card.el.style.top  = `${this.mousePosY - this.mouseOffsetY}px`;
+      this.card.position({
+        top:  this.mousePosY - this.mouseOffsetY,
+        left: this.mousePosX - this.mouseOffsetX
+      })
     }
   }
 

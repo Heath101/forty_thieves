@@ -25,9 +25,7 @@ export default class Foundation extends CardPile {
     this.cards.push(card)
     this.currentRank = card.rank
     this.el.appendChild(card.el)
-    card.el.style.zIndex = this.cards.length + 20
-    card.el.style.left = '0px'
-    card.el.style.top = '0px'
+    card.position({top: 0, left: 0, z: this.cards.length + 20})
   }
 
   // this overrides the fn in CardPile.  Needs custom logic about reseting state
@@ -47,9 +45,7 @@ export default class Foundation extends CardPile {
     let card = this.lastCard
     if (card) {
       this.currentRank = this.currentRank - 1
-      card.el.style.zIndex = this.cards.length + 20
-      card.el.style.left = '0px'
-      card.el.style.top = '0px'
+      card.position({top: 0, left: 0, z: this.cards.length + 20})
     }
   }
 }

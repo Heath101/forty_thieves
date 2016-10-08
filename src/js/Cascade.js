@@ -21,9 +21,7 @@ export default class Cascade extends CardPile {
     this.cards.push(card)
     let vertOffset =  44 * level
     this.el.appendChild(card.el)
-    card.el.style.zIndex = level + 10
-    card.el.style.left = '0px'
-    card.el.style.top = vertOffset + 'px'
+    card.position({top: vertOffset, left: 0, z: level + 10})
   }
 
   resetCard() {
@@ -31,9 +29,7 @@ export default class Cascade extends CardPile {
     let vertOffset =  44 * level
     let card = this.lastCard
     if (card) {
-      card.el.style.zIndex = level + 10
-      card.el.style.left = '0px'
-      card.el.style.top = vertOffset + 'px'
+      card.position({top: vertOffset, left: 0, z: level + 10})
     }
   }
 }

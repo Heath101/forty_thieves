@@ -14,9 +14,7 @@ export default class Waste extends CardPile {
 
     let horizontalOffset =  24 * level
     this.el.appendChild(card.el)
-    card.el.style.zIndex = level + 10
-    card.el.style.left = horizontalOffset + 'px'
-    card.el.style.top = '0px'
+    card.position({top: 0, left: horizontalOffset, z: level + 10})
   }
 
   willAccept(card) { return false }
@@ -26,9 +24,7 @@ export default class Waste extends CardPile {
     if (card) {
       let level = this.cards.length - 1
       let horizontalOffset =  24 * level
-      card.el.style.zIndex = level + 10
-      card.el.style.left = horizontalOffset + 'px'
-      card.el.style.top = '0px'
+      card.position({top: 0, left: horizontalOffset, z: level + 10})
     }
   }
 }
