@@ -1,10 +1,10 @@
-import Deck        from './Deck.js'
-import PlayArea    from './PlayArea.js'
-import Foundation  from './Foundation.js'
-import Cascade     from './Cascade.js'
-import MoveList    from './MoveList.js'
-import CardMover   from './CardMover.js'
-import CardPile    from "./CardPile";
+import Deck          from './Deck.js'
+import PlayArea      from './PlayArea.js'
+import Foundation    from './Foundation.js'
+import Cascade       from './Cascade.js'
+import MoveList      from './MoveList.js'
+import CardMover     from './CardMover.js'
+import CardPile      from "./CardPile"
 
 export default class FortyThieves {
 

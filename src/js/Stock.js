@@ -9,6 +9,7 @@ export default class Stock {
 
   attach() {
     this.el.addEventListener('click', this.click.bind(this))
+    document.addEventListener('keydown', this.keydown.bind(this))
   }
 
   click(e) {
@@ -18,6 +19,10 @@ export default class Stock {
       this.playArea.play(this.cards.pop())
     }
     this.el.innerHTML = this.cards.length
+  }
+
+  keydown(e) {
+    if (e.which == 13) { this.click(e) }
   }
 
   add(card) {
