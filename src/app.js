@@ -6,15 +6,11 @@ require('./styles/StartScreen.scss')
 require('./styles/Game.scss')
 
 import FortyThieves from './js/FortyThieves.js'
+import StartScreen  from './js/StartScreen.js'
 
-const start = document.getElementById('newGame')
-start.addEventListener('click', startGame)
+new StartScreen(document.getElementById('startScreen'))
 
-function startGame(e) {
-  let game = new FortyThieves()
-  game.init(document.getElementById('gameBoard'))
-  let screen = document.querySelector('#startScreen')
-  screen.classList.add('hidden')
-  screen.style.zIndex = 0
-  e.target.removeEventListener(e.type, startGame)
-}
+document.addEventListener('game:new', () => {
+  window.game = new FortyThieves(document.getElementById('gameBoard'))
+  window.game.init()
+})

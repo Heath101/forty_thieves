@@ -10,8 +10,12 @@ import GameMenu      from "./GameMenu.js"
 
 export default class FortyThieves {
 
-  init(el) {
+  constructor(el) {
     this.el = el
+  };
+
+
+  init() {
     this.gameMenu = new GameMenu()
     this.cardMover = new CardMover()
     let cards = Deck.generate(2)
