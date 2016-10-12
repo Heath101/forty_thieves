@@ -18,6 +18,7 @@ export default class FortyThieves {
     let playArea = this.createPlayArea()
     this.cascades = this.createCascades()
     this.score = new Score(document.getElementById('score'))
+    this.moveList = new MoveList()
     this.populateCascades(cards, this.cascades)
     playArea.addStock(cards)
     this.attach()
@@ -40,7 +41,7 @@ export default class FortyThieves {
     let playAreaEl = document.createElement('div')
     playAreaEl.className = 'PlayArea'
     this.el.appendChild(playAreaEl)
-    return new PlayArea(playAreaEl, window.moveList)
+    return new PlayArea(playAreaEl)
   }
 
   createFoundations() {

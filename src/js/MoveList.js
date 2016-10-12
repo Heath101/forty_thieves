@@ -1,9 +1,16 @@
 export default class MoveList {
   constructor() {
     this.moveList = []
+    this.attach()
   }
 
-  add(move) {
+  attach() {
+    document.addEventListener('move:add', this.add.bind(this))
+    document.addEventListener('move:undo', this.undo.bind(this))
+  }
+
+  add(e) {
+    const move = e.detail
     this.moveList.push(move)
     move.move()
   }
@@ -12,6 +19,5 @@ export default class MoveList {
     if (this.moveList.length > 0) {
       this.moveList.pop().undo()
     }
-    document.dispatchEvent(new CustomEvent('move:undo'))
   }
 }

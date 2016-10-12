@@ -4,9 +4,8 @@ import Stock from './Stock.js'
 import Waste from './Waste.js'
 
 export default class PlayArea {
-  constructor(el, moveList) {
+  constructor(el) {
     this.el = el
-    this.moveList = moveList
     this.stock = this.create(Stock, 'Stock')
     this.waste = this.create(Waste, 'Waste')
   }
@@ -23,10 +22,13 @@ export default class PlayArea {
   }
 
   play(card) {
-    this.moveList.add({
-      move: this.moveStockToWaste.bind(this, card),
-      undo: this.moveCardToStock.bind(this,card)
+    let ev = new CustomEvent('move:add', {
+      'detail': {
+        move: this.moveStockToWaste.bind(this, card),
+        undo: this.moveCardToStock.bind(this,card)
+      }
     })
+    document.dispatchEvent(ev)
   }
 
   reset() {

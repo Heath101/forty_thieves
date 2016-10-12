@@ -6,9 +6,6 @@ require('./styles/StartScreen.scss')
 require('./styles/Game.scss')
 
 import FortyThieves from './js/FortyThieves.js'
-import MoveList from './js/MoveList.js'
-
-window.moveList = new MoveList()
 
 const start = document.getElementById('newGame')
 start.addEventListener('click', startGame)
@@ -22,7 +19,7 @@ function startGame(e) {
   e.target.removeEventListener(e.type, startGame)
 }
 
-let undo = document.getElementById('undo')
-undo.addEventListener('click', e => {
-  window.moveList.undo()
+// This needs to go somewhere else
+document.getElementById('undo').addEventListener('click', e => {
+  document.dispatchEvent(new CustomEvent('move:undo'))
 })

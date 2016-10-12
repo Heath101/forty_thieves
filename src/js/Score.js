@@ -1,9 +1,10 @@
 export default class Score {
   constructor(el) {
+    this.el = el
     this.cardPoints = 5
-    this.scoreEl = el.querySelector('span')
     this.score = 0
     this.attach()
+    this.updateScore()
   }
 
   attach() {
@@ -11,8 +12,8 @@ export default class Score {
     document.addEventListener('foundation:draw', this.updateScore.bind(this, -this.cardPoints))
   }
 
-  updateScore(points) {
+  updateScore(points = 0) {
     this.score += points
-    this.scoreEl.innerHTML = this.score
+    this.el.innerHTML = `score:  ${this.score}`
   }
 }

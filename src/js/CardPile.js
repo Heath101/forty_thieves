@@ -70,9 +70,12 @@ export default class CardPile {
   }
 
   static move(origin, target) {
-    window.moveList.add({
-      move: origin.swap(target),
-      undo: target.swap(origin)
+    let ev = new CustomEvent('move:add', {
+      'detail': {
+        move: origin.swap(target),
+        undo: target.swap(origin)
+      }
     })
+    document.dispatchEvent(ev)
   }
 }
