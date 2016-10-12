@@ -4,7 +4,8 @@ import Foundation    from './Foundation.js'
 import Cascade       from './Cascade.js'
 import MoveList      from './MoveList.js'
 import CardMover     from './CardMover.js'
-import CardPile      from "./CardPile"
+import CardPile      from "./CardPile.js"
+import Score         from "./Score.js"
 
 export default class FortyThieves {
 
@@ -16,6 +17,7 @@ export default class FortyThieves {
     this.foundations = this.createFoundations()
     let playArea = this.createPlayArea()
     this.cascades = this.createCascades()
+    this.score = new Score(document.getElementById('score'))
     this.populateCascades(cards, this.cascades)
     playArea.addStock(cards)
     this.attach()
