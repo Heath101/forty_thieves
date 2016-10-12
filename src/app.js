@@ -18,8 +18,3 @@ function startGame(e) {
   screen.style.zIndex = 0
   e.target.removeEventListener(e.type, startGame)
 }
-
-// This needs to go somewhere else
-document.getElementById('undo').addEventListener('click', e => {
-  document.dispatchEvent(new CustomEvent('move:undo'))
-})

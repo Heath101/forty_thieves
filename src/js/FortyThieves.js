@@ -6,21 +6,23 @@ import MoveList      from './MoveList.js'
 import CardMover     from './CardMover.js'
 import CardPile      from "./CardPile.js"
 import Score         from "./Score.js"
+import GameMenu      from "./GameMenu.js"
 
 export default class FortyThieves {
 
   init(el) {
     this.el = el
-    let cardMover = new CardMover()
+    this.gameMenu = new GameMenu()
+    this.cardMover = new CardMover()
     let cards = Deck.generate(2)
     Deck.shuffle(cards)
     this.foundations = this.createFoundations()
-    let playArea = this.createPlayArea()
+    this.playArea = this.createPlayArea()
     this.cascades = this.createCascades()
     this.score = new Score(document.getElementById('score'))
     this.moveList = new MoveList()
     this.populateCascades(cards, this.cascades)
-    playArea.addStock(cards)
+    this.playArea.addStock(cards)
     this.attach()
   }
 
