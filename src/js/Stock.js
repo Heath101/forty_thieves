@@ -27,11 +27,15 @@ export default class Stock {
 
   add(card) {
     this.cards.push(card)
-    this.el.style.background = "";
-    this.el.innerHTML = this.cards.length
+    this.reset()
   }
 
   populate(cards) {
     this.cards = cards
+  }
+
+  reset() {
+    this.el.style.background = "";
+    this.el.innerHTML = this.cards.length
   }
 }

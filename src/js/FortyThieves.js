@@ -14,7 +14,6 @@ export default class FortyThieves {
     this.el = el
   };
 
-
   init() {
     this.gameMenu = new GameMenu()
     this.cardMover = new CardMover()

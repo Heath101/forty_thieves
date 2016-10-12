@@ -32,10 +32,27 @@ export default class PlayArea {
   }
 
   reset() {
+    let ev = new CustomEvent('move:add', {
+      'detail': {
+        move: this.moveAllWasteToStock.bind(this),
+        undo: this.moveAllStockToWaste.bind(this)
+      }
+    })
+    document.dispatchEvent(ev)
+  }
+
+  moveAllWasteToStock() {
     this.stock.cards = this.waste.cards.reverse()
     this.waste.cards = []
     this.waste.el.innerHTML = ''
-    this.stock.el.style.background = "";
+  }
+
+  moveAllStockToWaste() {
+    this.stock.cards.reverse().forEach( card => {
+      this.waste.add(card)
+    })
+    this.stock.cards = []
+    this.stock.reset()
   }
 
   moveStockToWaste(card) {
