@@ -13,7 +13,6 @@ export default class Foundation extends CardPile {
     if (this.currentRank <= 13) {
       if ((this.suit == card.suit) || (this.suit == null)) {
         if (this.currentRank + 1 == card.rank) {
-          this.suit = card.suit
           return true
         }
       }
@@ -22,6 +21,7 @@ export default class Foundation extends CardPile {
   }
 
   add(card) {
+    if (this.suit == null) { this.suit = card.suit }
     this.cards.push(card)
     this.currentRank = card.rank
     this.el.appendChild(card.el)

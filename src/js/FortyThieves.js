@@ -4,9 +4,9 @@ import Foundation    from './Foundation.js'
 import Cascade       from './Cascade.js'
 import MoveList      from './MoveList.js'
 import CardMover     from './CardMover.js'
-import CardPile      from "./CardPile.js"
 import Score         from "./Score.js"
 import GameMenu      from "./GameMenu.js"
+import AI            from "./AI.js"
 
 export default class FortyThieves {
 
@@ -24,22 +24,9 @@ export default class FortyThieves {
     this.cascades = this.createCascades()
     this.score = new Score(document.getElementById('score'))
     this.moveList = new MoveList()
+    this.AI = new AI(this.foundations, this.cascades)
     this.populateCascades(cards, this.cascades)
     this.playArea.addStock(cards)
-    this.attach()
-  }
-
-  attach() {
-    document.addEventListener('card:auto', this.auto.bind(this))
-  }
-
-  auto(e) {
-    const card = e.detail.card
-    const cardPiles = this.foundations.concat(this.cascades)
-    const match = cardPiles.find( cardPile => {
-      if (cardPile.willAccept(card)) { return cardPile}
-    })
-    if (match) { CardPile.move(e.detail.origin, match) }
   }
 
   createPlayArea() {
