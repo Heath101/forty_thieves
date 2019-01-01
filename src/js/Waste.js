@@ -1,30 +1,30 @@
-require('../styles/Waste.scss')
-
 import CardPile from './CardPile.js'
 
+require('../styles/Waste.scss')
+
 export default class Waste extends CardPile {
-  constructor(el, playArea) {
+  constructor (el, playArea) {
     super(el)
     this.playArea = playArea
   }
 
-  add(card) {
+  add (card) {
     let level = this.cards.length
     this.cards.push(card)
 
-    let horizontalOffset =  24 * level
+    let horizontalOffset = 24 * level
     this.el.appendChild(card.el)
-    card.position({top: 0, left: horizontalOffset, z: level + 10})
+    card.position({ top: 0, left: horizontalOffset, z: level + 10 })
   }
 
-  willAccept(card) { return false }
+  willAccept (card) { return false }
 
-  resetCard() {
+  resetCard () {
     let card = this.lastCard
     if (card) {
       let level = this.cards.length - 1
-      let horizontalOffset =  24 * level
-      card.position({top: 0, left: horizontalOffset, z: level + 10})
+      let horizontalOffset = 24 * level
+      card.position({ top: 0, left: horizontalOffset, z: level + 10 })
     }
   }
 }

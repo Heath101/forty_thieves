@@ -1,4 +1,4 @@
-import CardPile from "./CardPile.js"
+import CardPile from './CardPile.js'
 
 export default class AI {
   constructor (foundations, cascades) {
@@ -7,18 +7,18 @@ export default class AI {
     this.attach()
   };
 
-  attach() {
+  attach () {
     document.addEventListener('card:auto', this.auto.bind(this))
   }
 
-  auto(e) {
+  auto (e) {
     const card = e.detail.card
     const cardPiles = this.foundations.concat(this.cascades)
-    let matches = {foundations: [], cascades: [], emptyCascades: [] }
+    let matches = { foundations: [], cascades: [], emptyCascades: [] }
 
-    cardPiles.forEach( cardPile => {
+    cardPiles.forEach(cardPile => {
       if (cardPile.willAccept(card)) {
-        if (cardPile.constructor.name == 'Foundation') {
+        if (cardPile.constructor.name === 'Foundation') {
           matches.foundations.push(cardPile)
         } else {
           if (cardPile.cards.length > 0) {

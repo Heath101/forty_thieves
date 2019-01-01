@@ -5,11 +5,11 @@ export default class StartScreen {
     this.attach()
   };
 
-  attach() {
+  attach () {
     this.startGameEl.addEventListener('click', this.startGame.bind(this))
   }
 
-  startGame(e) {
+  startGame (e) {
     document.dispatchEvent(new CustomEvent('game:new'))
     this.el.classList.add('hidden')
     this.el.style.zIndex = 0

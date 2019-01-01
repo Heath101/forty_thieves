@@ -4,11 +4,11 @@ export default class GameMenu {
     this.attach()
   };
 
-  attach() {
+  attach () {
     this.undoButton.addEventListener('click', this.undo)
   }
 
-  undo() {
+  undo () {
     document.dispatchEvent(new CustomEvent('move:undo'))
   }
 }

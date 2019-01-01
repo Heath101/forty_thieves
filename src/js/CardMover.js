@@ -1,7 +1,7 @@
-import CardPile from "./CardPile.js";
+import CardPile from './CardPile.js'
 
 export default class CardMover {
-  constructor() {
+  constructor () {
     this.movingCard = false
     this.mousePosX = 0
     this.mousePosY = 0
@@ -10,7 +10,7 @@ export default class CardMover {
     this.attach()
   }
 
-  attach() {
+  attach () {
     document.addEventListener('card:pickup', this.cardPickup.bind(this))
     document.addEventListener('card:drop', this.cardDrop.bind(this))
     document.addEventListener('mousemove', this.mouseMove.bind(this))
@@ -19,8 +19,8 @@ export default class CardMover {
 
   cardPickup (e) {
     if (this.card) { // there is already a card activated
-      if (this.card == e.detail.card) { // the card has been clicked twice, deactivate
-        let ev = new CustomEvent('card:auto', {'detail': {'card': this.card, 'origin': this.origin}})
+      if (this.card === e.detail.card) { // the card has been clicked twice, deactivate
+        let ev = new CustomEvent('card:auto', { 'detail': { 'card': this.card, 'origin': this.origin } })
         document.dispatchEvent(ev)
         this.origin.deactivate()
         this.origin.resetCard()
@@ -32,19 +32,19 @@ export default class CardMover {
       this.origin = e.detail.origin
 
       // this is needed for the mouse move stuff
-      this.mouseOffsetX = this.mousePosX - this.card.el.offsetLeft;
-      this.mouseOffsetY = this.mousePosY - this.card.el.offsetTop;
+      this.mouseOffsetX = this.mousePosX - this.card.el.offsetLeft
+      this.mouseOffsetY = this.mousePosY - this.card.el.offsetTop
 
       this.card.beginMoving()
       this.movingCard = true
     }
   };
 
-  cardDrop(e) {
+  cardDrop (e) {
     let target = e.detail.target
 
     if (this.origin) {
-      if (target == this.origin) {
+      if (target === this.origin) {
         this.origin.resetCard()
         this.origin.activate()
         this.movingCard = false
@@ -61,7 +61,7 @@ export default class CardMover {
     }
   }
 
-  reset() {
+  reset () {
     this.movingCard = false
     this.card.endMoving()
     this.card = null
@@ -73,13 +73,13 @@ export default class CardMover {
     this.mousePosY = window.event.clientY
     if (this.movingCard) {
       this.card.position({
-        top:  this.mousePosY - this.mouseOffsetY,
+        top: this.mousePosY - this.mouseOffsetY,
         left: this.mousePosX - this.mouseOffsetX
       })
     }
   }
 
-  invalidCardDrop(e) {
+  invalidCardDrop (e) {
     if (this.origin && this.card) { // clicking outside tableau triggers the document handler :(
       this.origin.deactivate()
       this.origin.resetCard()

@@ -1,5 +1,5 @@
 export default class Score {
-  constructor(el) {
+  constructor (el) {
     this.el = el
     this.cardPoints = 5
     this.score = 0
@@ -7,12 +7,12 @@ export default class Score {
     this.updateScore()
   }
 
-  attach() {
+  attach () {
     document.addEventListener('foundation:add', this.updateScore.bind(this, this.cardPoints))
     document.addEventListener('foundation:draw', this.updateScore.bind(this, -this.cardPoints))
   }
 
-  updateScore(points = 0) {
+  updateScore (points = 0) {
     this.score += points
     this.el.innerHTML = `score:  ${this.score}`
   }

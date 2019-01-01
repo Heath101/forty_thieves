@@ -1,19 +1,19 @@
 require('../styles/Stock.scss')
 
 export default class Stock {
-  constructor(el, playArea) {
+  constructor (el, playArea) {
     this.el = el
     this.playArea = playArea
     this.attach()
   }
 
-  attach() {
+  attach () {
     this.el.addEventListener('click', this.click.bind(this))
     document.addEventListener('keydown', this.keydown.bind(this))
   }
 
-  click(e) {
-    if (this.cards.length == 0) { // no more cards in deck
+  click (e) {
+    if (this.cards.length === 0) { // no more cards in deck
       this.playArea.reset()
     } else {
       this.playArea.play(this.cards.pop())
@@ -21,21 +21,21 @@ export default class Stock {
     this.el.innerHTML = this.cards.length
   }
 
-  keydown(e) {
-    if (e.which == 13) { this.click(e) }
+  keydown (e) {
+    if (e.which === 13) { this.click(e) }
   }
 
-  add(card) {
+  add (card) {
     this.cards.push(card)
     this.reset()
   }
 
-  populate(cards) {
+  populate (cards) {
     this.cards = cards
   }
 
-  reset() {
-    this.el.style.background = "";
+  reset () {
+    this.el.style.background = ''
     this.el.innerHTML = this.cards.length
   }
 }
