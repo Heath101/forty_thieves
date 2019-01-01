@@ -1,3 +1,5 @@
+import { events } from './Events'
+
 export default class Score {
   constructor (el) {
     this.el = el
@@ -8,8 +10,8 @@ export default class Score {
   }
 
   attach () {
-    document.addEventListener('foundation:add', this.updateScore.bind(this, this.cardPoints))
-    document.addEventListener('foundation:draw', this.updateScore.bind(this, -this.cardPoints))
+    document.addEventListener(events.foundation.add, this.updateScore.bind(this, this.cardPoints))
+    document.addEventListener(events.foundation.draw, this.updateScore.bind(this, -this.cardPoints))
   }
 
   updateScore (points = 0) {

@@ -1,3 +1,5 @@
+import { events, dispatch } from './Events'
+
 export default class CardPile {
   constructor (el) {
     this.el = el
@@ -8,20 +10,18 @@ export default class CardPile {
   attach () {
     this.el.addEventListener('mousedown', this.mousedown.bind(this))
     this.el.addEventListener('mouseup', this.mouseup.bind(this))
-    document.addEventListener('move:undo', this.moveUndo.bind(this))
+    document.addEventListener(events.move.undo, this.moveUndo.bind(this))
   }
 
   mousedown (e) {
     if (this.lastCard != null && this.isAboveLastCard(e.clientX, e.clientY)) {
-      let ev = new CustomEvent('card:pickup', { 'detail': { 'origin': this, 'card': this.lastCard } })
-      document.dispatchEvent(ev)
+      dispatch.card.pickup({ origin: this, card: this.lastCard })
     }
   }
 
   mouseup (e) {
     e.stopPropagation()
-    let ev = new CustomEvent('card:drop', { 'detail': { 'target': this } })
-    document.dispatchEvent(ev)
+    dispatch.card.drop({ target: this })
   }
 
   get lastCard () {
@@ -70,12 +70,9 @@ export default class CardPile {
   }
 
   static move (origin, target) {
-    let ev = new CustomEvent('move:add', {
-      'detail': {
-        move: origin.swap(target),
-        undo: target.swap(origin)
-      }
+    dispatch.move.add({
+      move: origin.swap(target),
+      undo: target.swap(origin)
     })
-    document.dispatchEvent(ev)
   }
 }

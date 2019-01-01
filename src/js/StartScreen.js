@@ -1,3 +1,5 @@
+import { dispatch } from './Events'
+
 export default class StartScreen {
   constructor (el) {
     this.el = el
@@ -10,7 +12,7 @@ export default class StartScreen {
   }
 
   startGame (e) {
-    document.dispatchEvent(new CustomEvent('game:new'))
+    dispatch.game.new()
     this.el.classList.add('hidden')
     this.el.style.zIndex = 0
     e.target.removeEventListener(e.type, this.startGame.bind(this))

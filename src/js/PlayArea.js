@@ -1,5 +1,6 @@
 import Stock from './Stock.js'
 import Waste from './Waste.js'
+import { dispatch } from './Events.js'
 
 require('../styles/PlayArea.scss')
 
@@ -22,23 +23,17 @@ export default class PlayArea {
   }
 
   play (card) {
-    let ev = new CustomEvent('move:add', {
-      'detail': {
-        move: this.moveStockToWaste.bind(this, card),
-        undo: this.moveCardToStock.bind(this, card)
-      }
+    dispatch.move.add({
+      move: this.moveStockToWaste.bind(this, card),
+      undo: this.moveCardToStock.bind(this, card)
     })
-    document.dispatchEvent(ev)
   }
 
   reset () {
-    let ev = new CustomEvent('move:add', {
-      'detail': {
-        move: this.moveAllWasteToStock.bind(this),
-        undo: this.moveAllStockToWaste.bind(this)
-      }
+    dispatch.move.add({
+      move: this.moveAllWasteToStock.bind(this),
+      undo: this.moveAllStockToWaste.bind(this)
     })
-    document.dispatchEvent(ev)
   }
 
   moveAllWasteToStock () {

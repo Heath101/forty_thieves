@@ -1,3 +1,5 @@
+import { events } from './Events'
+
 export default class MoveList {
   constructor () {
     this.moveList = []
@@ -5,8 +7,8 @@ export default class MoveList {
   }
 
   attach () {
-    document.addEventListener('move:add', this.add.bind(this))
-    document.addEventListener('move:undo', this.undo.bind(this))
+    document.addEventListener(events.move.add, this.add.bind(this))
+    document.addEventListener(events.move.undo, this.undo.bind(this))
   }
 
   add (e) {

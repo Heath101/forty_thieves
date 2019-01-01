@@ -1,4 +1,5 @@
 import CardPile from './CardPile.js'
+import { events, dispatch } from './Events.js'
 
 export default class CardMover {
   constructor () {
@@ -11,8 +12,8 @@ export default class CardMover {
   }
 
   attach () {
-    document.addEventListener('card:pickup', this.cardPickup.bind(this))
-    document.addEventListener('card:drop', this.cardDrop.bind(this))
+    document.addEventListener(events.card.pickup, this.cardPickup.bind(this))
+    document.addEventListener(events.card.drop, this.cardDrop.bind(this))
     document.addEventListener('mousemove', this.mouseMove.bind(this))
     document.addEventListener('mouseup', this.invalidCardDrop.bind(this))
   }
@@ -20,8 +21,8 @@ export default class CardMover {
   cardPickup (e) {
     if (this.card) { // there is already a card activated
       if (this.card === e.detail.card) { // the card has been clicked twice, deactivate
-        let ev = new CustomEvent('card:auto', { 'detail': { 'card': this.card, 'origin': this.origin } })
-        document.dispatchEvent(ev)
+        dispatch.card.auto({ card: this.card, origin: this.origin })
+
         this.origin.deactivate()
         this.origin.resetCard()
         this.card = null

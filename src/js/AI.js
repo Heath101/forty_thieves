@@ -1,4 +1,5 @@
 import CardPile from './CardPile.js'
+import { events } from './Events'
 
 export default class AI {
   constructor (foundations, cascades) {
@@ -8,7 +9,7 @@ export default class AI {
   };
 
   attach () {
-    document.addEventListener('card:auto', this.auto.bind(this))
+    document.addEventListener(events.card.auto, this.auto.bind(this))
   }
 
   auto (e) {

@@ -1,4 +1,7 @@
 import CardPile from './CardPile.js'
+import { dispatch } from './Events'
+
+require('../styles/Foundation.scss')
 
 require('../styles/Foundation.scss')
 
@@ -26,14 +29,14 @@ export default class Foundation extends CardPile {
     this.currentRank = card.rank
     this.el.appendChild(card.el)
     card.position({ top: 0, left: 0, z: this.cards.length + 20 })
-    document.dispatchEvent(new CustomEvent('foundation:add'))
+    dispatch.foundation.add()
   }
 
   // this overrides the fn in CardPile.  Needs custom logic about reseting state
   draw () {
     let card = this.cards.pop()
     this.el.removeChild(card.el)
-    document.dispatchEvent(new CustomEvent('foundation:draw'))
+    dispatch.foundation.draw()
     if (this.cards.length === 0) {
       this.suit = null
       this.currentRank = 0
